@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Uttam Tiwari - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wgh@300;600;700&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="dark">
+    <title>Mr. Uttam Tiwari - Data Analyst Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Basic Setup --- */
+        html {
+            scroll-behavior: smooth;
+            color-scheme: dark !important;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,49 +24,44 @@
             scroll-behavior: smooth;
         }
 
-        /* --- ULTIMATE DYNAMIC TECH BACKGROUND --- */
         body {
-            background-color: #050810;
-            /* Ekdum deep dark blue/black base */
-            color: #f8fafc;
-            margin: 0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            position: relative;
+            background-color: #0b0f19 !important;
+            color: #f8fafc !important;
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
         }
 
-        /* 1. Tech Grid Pattern (Data Analyst Feel) */
-        /* 1. Elite Level Tech Grid (Fading & Moving) */
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Background Grid Animation */
         body::before {
             content: '';
             position: fixed;
             top: -40px;
-            /* Seamless loop ke liye thoda upar se start kiya */
             left: 0;
             right: 0;
             bottom: 0;
             width: 100vw;
             height: calc(100vh + 40px);
-
-            /* Grid ki lines ko thoda aur sharp kiya */
             background-image:
                 linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
             background-size: 40px 40px;
-            /* Dabbe ka size thoda bada kiya clean look ke liye */
-
             z-index: -2;
-
-            /* THE REAL MAGIC: Fading Edges (Radial Mask) */
-            /* Isse grid sirf center mein dikhega aur sides mein andhere mein ghul jayega */
             -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
             mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
-
-            /* Data Flow Animation */
             animation: flowGrid 15s linear infinite;
         }
 
-        /* Grid ko dheere-dheere neeche move karne ka animation */
         @keyframes flowGrid {
             0% {
                 transform: translateY(0);
@@ -68,11 +70,8 @@
             100% {
                 transform: translateY(40px);
             }
-
-            /* Exact ek grid box jitna move karega taaki loop smooth ho */
         }
 
-        /* 2. Dynamic Moving Glowing Lights (Alive Feel) */
         body::after {
             content: '';
             position: fixed;
@@ -80,18 +79,14 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            /* Lovable jaisi Green aur Blue glowing lights */
             background:
                 radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
                 radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
             z-index: -1;
-            /* Dheere-dheere ghoomega jisse alive lagega */
             animation: rotateGlow 30s linear infinite;
             pointer-events: none;
-            /* Mouse iske aar-paar ja sake */
         }
 
-        /* Background Animation Logic */
         @keyframes rotateGlow {
             0% {
                 transform: rotate(0deg);
@@ -102,21 +97,27 @@
             }
         }
 
-        /* Cards ke shadow ko thoda aur premium karna */
+        /* Glassmorphism Cards */
         .card,
         .stat-box,
         .badge-item,
         .project-card,
-        #sales-chart-container {
+        .skills-left,
+        .skills-right {
             background: rgba(13, 20, 36, 0.6) !important;
-            /* Thoda aur transparent */
             backdrop-filter: blur(16px);
-            /* Kaanch ko aur dhundla kiya */
             border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            /* Inner light effect */
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 8px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover,
+        .stat-box:hover,
+        .badge-item:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6 !important;
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
         }
 
         h1,
@@ -126,30 +127,11 @@
             color: #f8fafc;
         }
 
-        h3 {
-            text-transform: uppercase;
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            text-align: center;
-            letter-spacing: 2px;
-            color: #f8fafc
-        }
-
-        .highlight {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
         ul {
             list-style: none;
         }
 
-        /* --- Navbar --- */
-        /* --- Navbar (Updated for Right Side Alignment) --- */
+        /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -160,7 +142,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -169,7 +150,6 @@
             font-size: 1.2rem;
         }
 
-        /* Yeh container links aur theme button dono ko right side mein ek sath rakhega */
         .nav-right-container {
             display: flex;
             align-items: center;
@@ -190,642 +170,50 @@
             color: #3b82f6;
         }
 
-        /* --- Hero Section --- */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-
-        .hero h2 {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            font-weight: normal;
-        }
-
-        .hero p {
-            margin: 15px 0 30px;
-        }
-
-        /* --- Modern Buttons --- */
-        .btn {
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn.primary {
-            background-color: #3b82f6;
-            color: #fff;
-            border: none;
-        }
-
-        .btn.primary:hover {
-            background-color: #2563eb;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn.secondary,
-        .btn.outline {
-            background-color: transparent;
-            color: #3b82f6;
-            border: 1px solid #3b82f6;
-        }
-
-        .btn.secondary:hover,
-        .btn.outline:hover {
-            background-color: #3b82f6;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .btn.small {
-            padding: 6px 14px;
-            font-size: 0.85rem;
-        }
-
-
-
-        /* --- Tech Stack --- */
-        .tech-stack {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .tech-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tech-item {
-            text-align: center;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .tech-item:hover {
-            transform: scale(1.1);
-        }
-
-        .tech-item img {
-            width: 50px;
-            height: 50px;
-            background: #1e293b;
-            border-radius: 10px;
-            padding: 5px;
-            margin-bottom: 5px;
-        }
-
-        .tech-item span {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* --- Projects Section (Updated 6 Projects) --- */
-        .projects {
-            padding: 50px;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: #1e293b;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: #3b82f6;
-        }
-
-        .project-img {
-            width: 100%;
-            height: 160px;
-            background-color: #0f172a;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .tags {
-            display: flex;
-            gap: 8px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background-color: #334155;
-            color: #cbd5e1;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            border-radius: 6px;
-        }
-
-        .project-desc {
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            color: #94a3b8;
-            flex-grow: 1;
-        }
-
-        .card-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: auto;
-        }
-
-        .view-all-btn {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        /* --- About & Timeline --- */
-        .about,
-        .work-experience {
-            padding: 50px;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .profile-pic img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: #1e293b;
-            border: 3px solid #3b82f6;
-        }
-
-        .timeline {
-            border-left: 2px solid #3b82f6;
-            padding-left: 30px;
-            margin-left: 10px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -37px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background-color: #3b82f6;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #3b82f6;
-        }
-
-        /* --- Skills & Certifications (Restored) --- */
-        .skills-section {
-            padding: 50px;
-        }
-
-        .skills-container {
-            display: flex;
-            gap: 40px;
-        }
-
-        .skills-left,
-        .skills-right {
-            flex: 1;
-            background-color: #1e293b;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            text-align: center;
-        }
-
-        .skill-item img {
-            width: 45px;
-            height: 45px;
-            background: #0f172a;
-            margin-bottom: 5px;
-            border-radius: 8px;
-            padding: 5px;
-        }
-
-        .skill-item p {
-            font-size: 0.75rem;
-            color: #cbd5e1;
-        }
-
-        .badges-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        /* Jab user mouse ko Tata ya Deloitte wale certificate box par lekar jayega */
-        .badges-grid a.badge-item:hover {
-            transform: translateY(-4px);
-            /* Box halka sa upar ki taraf uthega */
-            border-color: #10b981 !important;
-            /* Border ka color green (emerald) ho jayega */
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
-            /* Green glow effect aayega */
-        }
-
-
-        .badge-item {
-            background: #fff;
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-        }
-
-
-
-        .badge {
-            width: 100%;
-            height: 50px;
-            object-fit: contain;
-        }
-
-        /* --- Contact Section (Restored & Styled) --- */
-        .contact {
-            padding: 50px;
-        }
-
-        .contact-container {
-            display: flex;
-            gap: 50px;
-            justify-content: center;
-        }
-
-        .contact-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            max-width: 400px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .contact-icon {
-            width: 45px;
-            height: 45px;
-            background: #1e293b;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #334155;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .input-row input {
-            flex: 1;
-        }
-
-        /* Normal input fields */
-        .contact-form input,
-        .contact-form textarea {
-            padding: 14px;
-            background-color: #1e293b !important;
-            border: 1px solid #334155;
-            color: #f8fafc !important;
-            border-radius: 8px;
-            width: 100%;
-            transition: border 0.3s;
-        }
-
-        /* 🛠️ Yeh hai wo magic code jo Autofill (Suggestions) hone par bhi white background nahi hone dega */
-        .contact-form input:-webkit-autofill,
-        .contact-form input:-webkit-autofill:hover,
-        .contact-form input:-webkit-autofill:focus,
-        .contact-form textarea:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
-            /* Browser ki white background ko andar se dark kar dega */
-            -webkit-text-fill-color: #f8fafc !important;
-            /* Text color ko white rakhega */
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            background-color: #1e293b !important;
-            color: #f8fafc !important;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        /* --- Scroll Animation Classes --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #080c17;
-            padding: 20px 50px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-links a {
-            margin: 0 10px;
-            color: #94a3b8;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #3b82f6;
-        }
-
-        /* --- Responsive Layout --- */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .about-content,
-            .contact-container,
-            .skills-container {
-                flex-direction: column;
-            }
-
-            .input-row {
-                flex-direction: column;
-            }
-
-            .timeline {
-                margin-left: 0;
-                padding-left: 20px;
-                text-align: left;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .badges-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-
-        /* Light Mode Colors (Jab body par light-mode class lagegi) */
-        body.light-mode {
-            background-color: #f8fafc !important;
-            color: #1e293b !important;
-        }
-
-        body.light-mode h1,
-        body.light-mode h2,
-        body.light-mode h3,
-        body.light-mode h4,
-        body.light-mode .logo {
-            color: #0f172a !important;
-        }
-
-        body.light-mode .card,
-        body.light-mode .skills-left,
-        body.light-mode .skills-right,
-        body.light-mode .contact-form input,
-        body.light-mode .contact-form textarea {
-            background-color: #ffffff !important;
-            color: #0f172a !important;
-            border-color: #cbd5e1 !important;
-        }
-
-        body.light-mode .navbar {
-            background-color: rgba(248, 250, 252, 0.85) !important;
-        }
-
-        body.light-mode .tag {
-            background-color: #e2e8f0 !important;
-            color: #475569 !important;
-        }
-
-
-        /* --- Advanced Data Analyst Theme & Glassmorphism --- */
-        :root {
-            --bg-primary: #090d16;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent-blue: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-        }
-
-        /* Glassmorphism Cards aur Hover Effect */
-        .card,
-        .stat-box,
-        .badge-item,
-        .project-card {
-            background: var(--bg-card) !important;
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color) !important;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover,
-        .stat-box:hover,
-        .badge-item:hover,
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue) !important;
-            box-shadow: 0 12px 40px var(--accent-glow);
-        }
-
-        /* --- COMPACT STATS BANNER (Gaps kam kiye hain) --- */
+        /* Stats Banner */
         .stats-banner {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin: 15px auto 40px;
-            /* Margin kam karke card ko upar khicha */
+            margin: 25px auto 40px;
             max-width: 1100px;
             padding: 0 20px;
         }
 
         .stat-box {
-            background: rgba(13, 20, 36, 0.6) !important;
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 15px 15px;
-            /* Andar ki padding kam ki taaki card chota ho */
+            padding: 20px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
             cursor: pointer;
-        }
-
-        /* Sweeping Light Animation (Box ke andar chalti hui roshni) */
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
-            transform: skewX(-25deg);
-            transition: left 0.6s ease;
-        }
-
-        /* Jab mouse aayega toh roshni cross karegi aur box glow karega */
-        .stat-box:hover::before {
-            left: 200%;
-        }
-
-        .stat-box:hover {
-            transform: translateY(-12px) scale(1.03);
-            border-color: var(--hover-color) !important;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--hover-color) inset;
         }
 
         .stat-icon {
             font-size: 2.2rem;
             margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        /* Mouse aane par icon ghoomega aur bada hoga */
-        .stat-box:hover .stat-icon {
-            transform: scale(1.2) rotate(8deg);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: #f8fafc;
-            margin: 0 0 5px 0;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            margin-bottom: 5px;
         }
 
-        /* Mouse aane par number ka color change hoga aur chamkega */
-        .stat-box:hover .stat-number {
-            color: var(--hover-color);
-            text-shadow: 0 0 15px var(--hover-color);
-        }
-
-        .stat-box p {
-            font-size: 1.05rem;
-            color: #e2e8f0;
-            margin: 0 0 8px 0;
-            font-weight: 600;
-        }
-
-        /* Naya detail tag jo metrics ko aur professional dikhayega */
         .stat-detail {
             font-size: 0.8rem;
             color: #64748b;
             background: rgba(255, 255, 255, 0.05);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
             display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
-        .stat-box h3 {
-            font-size: 2rem;
-            color: var(--accent-blue);
-            margin: 0 0 5px 0;
-        }
-
-        .stat-box p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* Sliding Tools Ribbon Styling */
+        /* Tools Marquee */
         .tools-marquee {
             overflow: hidden;
             white-space: nowrap;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(13, 20, 36, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding: 15px 0;
             margin: 30px 0;
         }
@@ -839,7 +227,7 @@
             display: inline-block;
             padding: 0 30px;
             font-weight: 600;
-            color: var(--text-muted);
+            color: #94a3b8;
             font-size: 1.1rem;
         }
 
@@ -852,6 +240,71 @@
                 transform: translateX(-50%);
             }
         }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Light Mode Styles */
+        body.light-mode {
+            background-color: #f8fafc !important;
+            color: #1e293b !important;
+        }
+
+        body.light-mode h1,
+        body.light-mode h2,
+        body.light-mode h3,
+        body.light-mode .logo {
+            color: #0f172a !important;
+        }
+
+        body.light-mode .card,
+        body.light-mode .stat-box,
+        body.light-mode .project-card,
+        body.light-mode .skills-left,
+        body.light-mode .skills-right {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        body.light-mode .navbar {
+            background-color: rgba(248, 250, 252, 0.85) !important;
+        }
+
+        footer {
+            background-color: #080c17;
+            padding: 20px 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #94a3b8;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
     </style>
 </head>
 
@@ -860,27 +313,22 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">MR. UTTAM TIWARI</div>
-
-        <!-- Yeh naya container hai jo links aur button ko right side mein rakhega -->
         <div class="nav-right-container">
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button id="theme-toggle" class="btn-theme"
+            <button id="theme-toggle"
                 style="background: none; border: none; cursor: pointer; font-size: 1.2rem;">🌙</button>
         </div>
     </nav>
 
-    <!-- === ELITE HERO SECTION (Fully Mobile Responsive Fix) === -->
-    <div
-        style="width: 100%; max-width: 1100px; margin: 20px auto; padding: 20px; box-sizing: border-box; overflow-x: hidden;">
-
+    <!-- Hero Section -->
+    <div style="width: 100%; max-width: 1100px; margin: 40px auto; padding: 20px; box-sizing: border-box;">
         <div
             style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; text-align: center;">
-
-            <!-- Profile Image Container -->
             <div style="position: relative; width: 200px; height: 200px; flex-shrink: 0; margin: 0 auto;">
                 <div
                     style="position: absolute; inset: -3px; background: linear-gradient(135deg, #3b82f6, #8b5cf6, #10b981); border-radius: 50%; filter: blur(8px); opacity: 0.7;">
@@ -888,76 +336,57 @@
                 <img src="profile_pic.jpg" alt="Mr. Uttam Tiwari"
                     style="position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid #0d1424;">
             </div>
-
-            <!-- Text Content -->
             <div style="flex: 1; min-width: 280px; text-align: center;">
-
                 <div style="margin-bottom: 15px;">
                     <span
                         style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3); display: inline-block;">
                         Open to Data Analytics Roles
                     </span>
                 </div>
-
-                <h1
-                    style="color: #f8fafc; font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin: 0 0 20px 0; text-transform: none !important;">
+                <h1 style="color: #f8fafc; font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin: 0 0 20px 0;">
                     Hi, I'm <span style="color: #3b82f6;">Mr. Uttam Tiwari</span>
                 </h1>
-
-                <p style="color: #cbd5e1; font-size: 1.2rem; font-weight: 600; margin-bottom: 20px;">
-                    Data Analyst | BCA & ADCA
-                </p>
-
+                <p style="color: #cbd5e1; font-size: 1.2rem; font-weight: 600; margin-bottom: 20px;">Data Analyst | BCA
+                    & ADCA</p>
                 <p style="color: #94a3b8; font-size: 1.05rem; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
-                    I specialize in transforming raw datasets into actionable business insights. With a strong
-                    foundation in Python, SQL (MySQL Workbench), and Pandas, I build dynamic solutions.
+                    I specialize in transforming raw datasets into actionable business insights with Python, SQL, and
+                    Pandas.
                 </p>
-
             </div>
-
         </div>
     </div>
-    <!-- === ADVANCED IMPACT STATS BANNER === -->
-    <div class="stats-banner">
 
-        <!-- Box 1: BI & Visualization (Neon Blue Glow) -->
-        <div class="stat-box" style="--hover-color: #3b82f6;">
+    <!-- Stats Banner -->
+    <div class="stats-banner fade-in">
+        <div class="stat-box">
             <div class="stat-icon">📊</div>
             <h3 class="stat-number">5+</h3>
-            <p>Dashboards Built</p>
+            <p style="color:#e2e8f0; font-weight:600;">Dashboards Built</p>
             <span class="stat-detail">Power BI & Excel</span>
         </div>
-
-        <!-- Box 2: Database & Extraction (Neon Green Glow) -->
-        <div class="stat-box" style="--hover-color: #10b981;">
+        <div class="stat-box">
             <div class="stat-icon">🗄️</div>
             <h3 class="stat-number">100+</h3>
-            <p>SQL Queries</p>
+            <p style="color:#e2e8f0; font-weight:600;">SQL Queries</p>
             <span class="stat-detail">Complex Extraction</span>
         </div>
-
-        <!-- Box 3: Real Case Studies (Neon Purple Glow) -->
-        <div class="stat-box" style="--hover-color: #8b5cf6;">
+        <div class="stat-box">
             <div class="stat-icon">📈</div>
             <h3 class="stat-number">2+</h3>
-            <p>Business Case Studies</p>
+            <p style="color:#e2e8f0; font-weight:600;">Case Studies</p>
             <span class="stat-detail">Simulations & Reports</span>
         </div>
-
-        <!-- Box 4: Data Preparation (Neon Orange Glow) -->
-        <div class="stat-box" style="--hover-color: #f59e0b;">
+        <div class="stat-box">
             <div class="stat-icon">🧹</div>
             <h3 class="stat-number">50K+</h3>
-            <p>Rows Cleaned</p>
+            <p style="color:#e2e8f0; font-weight:600;">Rows Cleaned</p>
             <span class="stat-detail">Python & Pandas</span>
         </div>
-
     </div>
 
-    <!-- 2. Sliding Tools Ribbon -->
+    <!-- Sliding Tools Ribbon -->
     <div class="tools-marquee">
         <div class="marquee-track">
-            <!-- Tumhari strong skills yahan add ki hain -->
             <span>🐍 Python</span>
             <span>🐼 Pandas</span>
             <span>📊 SQL (MySQL)</span>
@@ -965,7 +394,6 @@
             <span>📉 Excel</span>
             <span>🔢 NumPy</span>
             <span>🧠 Machine Learning</span>
-            <!-- Continuous loop banane ke liye list ko repeat kiya gaya hai -->
             <span>🐍 Python</span>
             <span>🐼 Pandas</span>
             <span>📊 SQL (MySQL)</span>
@@ -976,22 +404,18 @@
         </div>
     </div>
 
-    <!-- === ELITE TECH STACK & SKILLS SECTION === -->
-    <div id="skills" style="max-width: 1100px; margin: 60px auto; padding: 20px; text-align: center;">
-
-        <h2
-            style="color: #f8fafc; font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; text-transform: none !important;">
+    <!-- Technical Arsenal & Skills Section -->
+    <div id="skills" style="max-width: 1100px; margin: 60px auto; padding: 20px; text-align: center;" class="fade-in">
+        <h2 style="color: #f8fafc; font-size: 2.5rem; margin-bottom: 40px; font-weight: 800;">
             Technical <span style="color: #3b82f6;">Arsenal</span>
         </h2>
-
         <div
-            style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 900px; margin: 0 auto;">
-
-            <!-- Category 1: Core Languages -->
+            style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto;">
+            <!-- Category 1 -->
             <div
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px 30px; flex: 1; min-width: 250px; text-align: left; transition: transform 0.3s ease;">
+                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 25px; flex: 1; min-width: 280px; text-align: left;">
                 <h3
-                    style="color: #3b82f6; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid rgba(59, 130, 246, 0.2); padding-bottom: 10px;">
+                    style="color: #3b82f6; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid rgba(59, 130, 246, 0.2); padding-bottom: 10px; letter-spacing: 1px;">
                     Languages & Databases</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     <span
@@ -1003,12 +427,11 @@
                         Workbench</span>
                 </div>
             </div>
-
-            <!-- Category 2: Data Libraries -->
+            <!-- Category 2 -->
             <div
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px 30px; flex: 1; min-width: 250px; text-align: left; transition: transform 0.3s ease;">
+                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 25px; flex: 1; min-width: 280px; text-align: left;">
                 <h3
-                    style="color: #10b981; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 10px;">
+                    style="color: #10b981; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 10px; letter-spacing: 1px;">
                     Data Libraries</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     <span
@@ -1019,12 +442,11 @@
                         style="background: rgba(255, 255, 255, 0.05); color: #e2e8f0; padding: 8px 15px; border-radius: 6px; font-size: 0.95rem; border: 1px solid rgba(255, 255, 255, 0.1);">GridSearchCV</span>
                 </div>
             </div>
-
-            <!-- Category 3: Tools & Environments -->
+            <!-- Category 3 -->
             <div
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px 30px; flex: 1; min-width: 250px; text-align: left; transition: transform 0.3s ease;">
+                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 25px; flex: 1; min-width: 280px; text-align: left;">
                 <h3
-                    style="color: #8b5cf6; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.2); padding-bottom: 10px;">
+                    style="color: #8b5cf6; font-size: 1.2rem; margin: 0 0 15px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.2); padding-bottom: 10px; letter-spacing: 1px;">
                     Tools & Environments</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     <span
@@ -1039,48 +461,276 @@
                         style="background: rgba(255, 255, 255, 0.05); color: #e2e8f0; padding: 8px 15px; border-radius: 6px; font-size: 0.95rem; border: 1px solid rgba(255, 255, 255, 0.1);">GitHub</span>
                 </div>
             </div>
-
         </div>
     </div>
 
-
-    <!-- === ELITE BUSINESS FORECAST LINE CHART SECTION === -->
-    <div
-        style="width: 100%; max-width: 1100px; margin: 60px auto; padding: 30px 20px; background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-sizing: border-box;">
-
-        <!-- Header with Title & Badge -->
+    <!-- Forecast Line Chart Section -->
+    <div style="width: 100%; max-width: 1100px; margin: 60px auto; padding: 30px 20px; background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-sizing: border-box;"
+        class="fade-in">
         <div
             style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
             <div>
                 <h3
-                    style="color: #f8fafc; font-size: 1.5rem; font-weight: 800; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                    style="color: #f8fafc; font-size: 1.5rem; font-weight: 800; margin: 0 0 5px 0; text-transform: uppercase;">
                     Scenario vs Baseline Growth</h3>
                 <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Business Forecast Simulation (Static Data)</p>
             </div>
-
-            <!-- Revenue Lift Badge -->
             <div
                 style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3);">
                 +12% Revenue Lift
             </div>
         </div>
-
-        <!-- Graph Canvas Container -->
         <div
             style="background: rgba(255, 255, 255, 0.02); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
             <canvas id="forecastChart" style="width: 100%; max-height: 350px;"></canvas>
         </div>
-
     </div>
 
-    <!-- Chart.js Library CDN (Yeh sabse zaroori hai graph ko chalane ke liye!) -->
+    <!-- Featured Projects -->
+    <div id="projects" style="max-width: 1100px; margin: 60px auto; padding: 20px;" class="fade-in">
+        <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
+            Featured <span style="color: #3b82f6;">Projects</span>
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            <div class="project-card" style="padding: 30px;">
+                <div
+                    style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    Excel & Power Query</div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Comprehensive Sales Dashboard</h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Developed a fully
+                    interactive Sales Data Dashboard utilizing Power Query for robust data cleaning and Pivot Tables.
+                </p>
+                <a href="#" style="color: #3b82f6; font-weight: bold;">View Documentation ➔</a>
+            </div>
+            <div class="project-card" style="padding: 30px;">
+                <div
+                    style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(139, 92, 246, 0.3);">
+                    Python & GridSearchCV</div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">ML Workflow & Hyperparameter Tuning
+                </h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Engineered robust
+                    machine learning workflows focusing on model pipelines and optimizing hyperparameters.</p>
+                <a href="#" style="color: #3b82f6; font-weight: bold;">View Source Code ➔</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Experience & Simulations Section -->
+    <div id="experience" style="max-width: 1100px; margin: 60px auto; padding: 20px;" class="fade-in">
+        <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
+            Professional Experience <span style="color: #3b82f6;">& Simulations</span>
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+            <!-- Experience 1 -->
+            <div class="project-card" style="padding: 30px;">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 15px;">
+                    <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0;">Pre-Internship Assessment Task</h3>
+                    <span
+                        style="color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(16, 185, 129, 0.3);">Jobyaari
+                        | April 2026</span>
+                </div>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 20px; line-height: 1.6;">Executed advanced
+                    data extraction and complex Excel processing tasks to evaluate real-world datasets for business
+                    readiness.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Advanced
+                        Excel</span>
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Data
+                        Cleaning</span>
+                </div>
+            </div>
+            <!-- Experience 2 -->
+            <div class="project-card" style="padding: 30px;">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 15px;">
+                    <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0;">Data Analytics Professional Simulation
+                    </h3>
+                    <span
+                        style="color: #3b82f6; font-weight: bold; background: rgba(59, 130, 246, 0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(59, 130, 246, 0.3);">Forage
+                        | March 2026</span>
+                </div>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 20px; line-height: 1.6;">Completed a
+                    rigorous industry simulation involving raw dataset analysis, generating actionable project reports,
+                    and presenting strategic recommendations.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Data
+                        Modeling</span>
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Business
+                        Insights</span>
+                </div>
+            </div>
+            <!-- Experience 3 -->
+            <div class="project-card" style="padding: 30px;">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 15px;">
+                    <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0;">SQL Marathon (Database Problem Solving)
+                    </h3>
+                    <span
+                        style="color: #f59e0b; font-weight: bold; background: rgba(245, 158, 11, 0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(245, 158, 11, 0.3);">GitHub
+                        | Jan 2026</span>
+                </div>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 20px; line-height: 1.6;">Engineered
+                    optimized queries to solve complex database challenges, managing database schemas and tracking daily
+                    progress in a structured repository.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">MySQL
+                        Workbench</span>
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Query
+                        Optimization</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div style="max-width: 1100px; margin: 60px auto; padding: 20px;" class="fade-in">
+        <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 40px; font-weight: 800;">
+            Certifications & <span style="color: #3b82f6;">Badges</span>
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <!-- Tata Certificate -->
+            <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_69c166ade17b6e154c5fc053_1776150063428_completion_certificate.pdf"
+                target="_blank" class="badge-item"
+                style="text-decoration: none; display: flex; align-items: center; gap: 15px; padding: 20px;">
+                <img src="tata_logo.png" alt="TATA Logo"
+                    style="width: 45px; height: 45px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px;">
+                <div>
+                    <p style="color: #f8fafc; font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Tata Data
+                        Analytics</p>
+                    <p style="color: #3b82f6; font-size: 0.85rem; font-weight: bold;">View Certificate ↗</p>
+                </div>
+            </a>
+            <!-- Deloitte Certificate -->
+            <a href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_69c166ade17b6e154c5fc053_1781413618556_completion_certificate.pdf"
+                target="_blank" class="badge-item"
+                style="text-decoration: none; display: flex; align-items: center; gap: 15px; padding: 20px;">
+                <img src="deloitte_logo.png" alt="Deloitte Logo"
+                    style="width: 45px; height: 45px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px;">
+                <div>
+                    <p style="color: #f8fafc; font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Deloitte Data
+                        Analytics</p>
+                    <p style="color: #3b82f6; font-size: 0.85rem; font-weight: bold;">View Certificate ↗</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact"
+        style="width: 100%; max-width: 1100px; margin: 80px auto 20px; padding: 50px 20px; background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-sizing: border-box;"
+        class="fade-in">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
+            <div style="text-align: left;">
+                <h2 style="color: #f8fafc; font-size: 2.5rem; margin-bottom: 20px; font-weight: 800;">Let's <span
+                        style="color: #3b82f6;">Connect</span></h2>
+                <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">I am currently open
+                    to Data Analyst roles and exciting data challenges. Drop a message using the form!</p>
+                <div style="margin-bottom: 30px;">
+                    <a href="resume.pdf" target="_blank"
+                        style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 12px 25px; border-radius: 8px; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3); display: inline-block;">📄
+                        Download ATS Resume</a>
+                </div>
+            </div>
+            <div>
+                <form id="ajax-form" style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="hidden" name="access_key" value="782a9191-aae4-4574-b055-4c85d2d1c19e">
+                    <input type="checkbox" name="botcheck" style="display: none;">
+                    <input type="text" name="name" placeholder="Your Name" required
+                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; outline: none;">
+                    <input type="email" name="email" placeholder="Your Email" required
+                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; outline: none;">
+                    <textarea name="message" placeholder="Your Message" required rows="4"
+                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; resize: none; outline: none;"></textarea>
+                    <button type="submit" id="submit-btn"
+                        style="background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Send
+                        Message 🚀</button>
+                    <p id="form-status"
+                        style="color: #10b981; font-size: 0.95rem; text-align: center; margin: 5px 0 0 0; display: none;">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Mr. Uttam Tiwari</strong> Copyright © 2026</p>
+            <div class="footer-links">
+                <a href="#">Resume</a> | <a href="#">LinkedIn</a> | <a href="#">GitHub</a>
+            </div>
+            <p>Insights Catalyst</p>
+        </div>
+    </footer>
+
+    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Chart Script -->
+    <!-- Consolidated JavaScript Logic -->
     <script>
-        const ctxForecast = document.getElementById('forecastChart').getContext('2d');
+        // 1. Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeToggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        });
 
-        // Creating smooth gradient fill under the scenario line
+        // 2. Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // 3. AJAX Contact Form Submission Handler
+        const contactForm = document.getElementById('ajax-form');
+        const statusText = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            statusText.style.display = "block";
+            statusText.style.color = "#3b82f6";
+            statusText.innerHTML = "Sending message...";
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: json
+                });
+                const result = await response.json();
+                if (response.status === 200) {
+                    statusText.style.color = "#10b981";
+                    statusText.innerHTML = "Message sent successfully! 🚀";
+                    contactForm.reset();
+                } else {
+                    statusText.style.color = "#ef4444";
+                    statusText.innerHTML = result.message || "Something went wrong!";
+                }
+            } catch (error) {
+                statusText.style.color = "#ef4444";
+                statusText.innerHTML = "Network error! Please try again.";
+            }
+        });
+
+        // 4. Forecast Chart Rendering (Chart.js)
+        const ctxForecast = document.getElementById('forecastChart').getContext('2d');
         const forecastGradient = ctxForecast.createLinearGradient(0, 0, 0, 300);
         forecastGradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
         forecastGradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
@@ -1141,564 +791,6 @@
             }
         });
     </script>
-    <!-- === ELITE PROJECTS GALLERY === -->
-    <div id="projects" style="max-width: 1100px; margin: 60px auto; padding: 20px;">
-
-        <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
-            Featured <span style="color: #3b82f6;">Projects</span>
-        </h2>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-
-            <!-- Project 1: Sales Data Dashboard -->
-            <div class="project-card"
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-
-                <div
-                    style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
-                    Excel & Power Query
-                </div>
-
-                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Comprehensive Sales Dashboard</h3>
-
-                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
-                    Developed a fully interactive Sales Data Dashboard utilizing Power Query for robust data cleaning
-                    and Pivot Tables for dynamic data aggregation and actionable visualization.
-                </p>
-
-                <a href="#"
-                    style="color: #3b82f6; text-decoration: none; font-weight: bold; font-size: 0.95rem; display: inline-block; transition: all 0.3s ease;">
-                    View Documentation ➔
-                </a>
-            </div>
-
-            <!-- Project 2: ML Pipeline & Tuning -->
-            <div class="project-card"
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-
-                <div
-                    style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(139, 92, 246, 0.3);">
-                    Python & GridSearchCV
-                </div>
-
-                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">ML Workflow & Hyperparameter Tuning
-                </h3>
-
-                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
-                    Engineered robust machine learning workflows focusing on model pipelines. Implemented GridSearchCV
-                    to systematically optimize hyperparameters and improve predictive accuracy.
-                </p>
-
-                <a href="#"
-                    style="color: #3b82f6; text-decoration: none; font-weight: bold; font-size: 0.95rem; display: inline-block; transition: all 0.3s ease;">
-                    View Source Code ➔
-                </a>
-            </div>
-
-        </div>
-    </div>
-    <div class="view-all-btn fade-in">
-        <a href="#" class="btn primary">View All Projects</a>
-    </div>
-    </section>
-
-
-    <!-- === ELITE EXPERIENCE & SIMULATIONS SECTION === -->
-    <div id="experience" style="max-width: 1100px; margin: 60px auto; padding: 20px;">
-
-        <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
-            Professional Experience <span style="color: #3b82f6;">& Simulations</span>
-        </h2>
-
-        <div style="display: flex; flex-direction: column; gap: 30px;">
-
-            <!-- Experience 1: Jobyaari -->
-            <div class="project-card"
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 15px;">
-                    <h3 style="color: #f8fafc; font-size: 1.6rem; margin: 0;">Pre-Internship Assessment Task</h3>
-                    <span
-                        style="color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(16, 185, 129, 0.3);">Jobyaari
-                        | April 2026</span>
-                </div>
-                <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 15px;">
-                    Executed advanced data extraction and complex Excel processing tasks to evaluate real-world datasets
-                    for business readiness.
-                </p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Advanced
-                        Excel</span>
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Data
-                        Extraction</span>
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Data
-                        Cleaning</span>
-                </div>
-            </div>
-
-            <!-- Experience 2: Forage -->
-            <div class="project-card"
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 15px;">
-                    <h3 style="color: #f8fafc; font-size: 1.6rem; margin: 0;">Data Analytics Professional Simulation
-                    </h3>
-                    <span
-                        style="color: #3b82f6; font-weight: bold; background: rgba(59, 130, 246, 0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(59, 130, 246, 0.3);">Forage
-                        | March 2026</span>
-                </div>
-                <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 15px;">
-                    Completed a rigorous industry simulation involving raw dataset analysis, generating actionable
-                    project reports, and presenting strategic recommendations.
-                </p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Data
-                        Modeling</span>
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Project
-                        Reporting</span>
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Business
-                        Insights</span>
-                </div>
-            </div>
-
-            <!-- Experience 3: SQL Marathon -->
-            <div class="project-card"
-                style="background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 15px;">
-                    <h3 style="color: #f8fafc; font-size: 1.6rem; margin: 0;">SQL Marathon (Database Problem Solving)
-                    </h3>
-                    <span
-                        style="color: #f59e0b; font-weight: bold; background: rgba(245, 158, 11, 0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(245, 158, 11, 0.3);">GitHub
-                        | Jan 2026</span>
-                </div>
-                <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 15px;">
-                    Engineered optimized queries to solve complex database challenges, managing database schemas and
-                    tracking daily progress in a structured repository.
-                </p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">MySQL
-                        Workbench</span>
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Query
-                        Optimization</span>
-                    <span
-                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Version
-                        Control</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Skills & Certifications Section -->
-    <section class="skills-section fade-in">
-        <div class="skills-container">
-            <!-- Left Side: Skills (Updated without Docker, CI/CD, AWS, GCP) -->
-            <div class="skills-left">
-                <h3>SKILLS</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <!-- Tableau Direct SVG Icon -->
-                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="45" height="45"
-                            fill="#E97627">
-                            <title>Tableau</title>
-                            <path
-                                d="M12 0v7h-7v2h7v7h2v-7h7V7h-7V0h-2zm-12 11v2h4v-2H0zm20 0v2h4v-2h-4zM11 20v4h2v-4h-2z" />
-                        </svg>
-                        <p>Tableau</p>
-                    </div>
-
-                    <div class="skill-item">
-                        <!-- Power BI Direct SVG Icon -->
-                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="45" height="45"
-                            fill="#F2C811">
-                            <title>Power BI</title>
-                            <path d="M0 7.5h5.5v16.5H0V7.5zm9.2-7.5h5.5v24H9.2V0zm18.4 12h-5.5v12h5.5V12z" />
-                        </svg>
-                        <p>PowerBI</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/filezilla/filezilla-original.svg"
-                            alt="Excel">
-                        <p>Advanced Excel</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                            alt="Python">
-                        <p>Python</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"
-                            alt="Scikit">
-                        <p>Scikit-learn</p>
-                    </div>
-                    <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"
-                            alt="Seaborn">
-                        <p>Seaborn</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Right Side: Badges -->
-            <div class="skills-right">
-                <h3>CERTIFICATIONS</h3>
-                <div class="badges-grid">
-                    <!-- Tata Certificate Box -->
-                    <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_69c166ade17b6e154c5fc053_1776150063428_completion_certificate.pdf"
-                        target="_blank" class="badge-item"
-                        style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: #1e293b; border: 1px solid #334155; padding: 15px; border-radius: 8px; transition: 0.3s;">
-                        <!-- Tata Logo ya koi chota icon -->
-                        <img src="tata_logo.png" alt="TATA Logo"
-                            style="width: 40px; height: 40px; object-fit: contain; background: #fff; padding: 4px; border-radius: 6px;">
-                        <div style="text-align: left;">
-                            <p style="color: #f8fafc; font-weight: 600; font-size: 0.9rem;">Tata Data Analytics</p>
-                            <p style="color: #3b82f6; font-size: 0.75rem;">View Certificate ↗</p>
-                        </div>
-                    </a>
-
-                    <!-- Deloitte Certificate Box -->
-                    <a href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_69c166ade17b6e154c5fc053_1781413618556_completion_certificate.pdf"
-                        target="_blank" class="badge-item"
-                        style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: #1e293b; border: 1px solid #334155; padding: 15px; border-radius: 8px; transition: 0.3s;">
-                        <!-- Deloitte Logo ya koi chota icon -->
-                        <img src="deloitte_logo.png" alt="Deloitte Logo"
-                            style="width: 40px; height: 40px; object-fit: contain; background: #fff; padding: 4px; border-radius: 6px;">
-                        <div style="text-align: left;">
-                            <p style="color: #f8fafc; font-weight: 600; font-size: 0.9rem;">Deloitte Data Analytics</p>
-                            <p style="color: #3b82f6; font-size: 0.75rem;">View Certificate ↗</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- === ELITE FUNCTIONAL CONTACT SECTION (AJAX Fixed) === -->
-    <div id="contact"
-        style="width: 100%; max-width: 1100px; margin: 80px auto 20px; padding: 50px 20px; background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-sizing: border-box;">
-        0, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px;">
-
-        <style>
-            input:-webkit-autofill,
-            input:-webkit-autofill:hover,
-            input:-webkit-autofill:focus,
-            textarea:-webkit-autofill,
-            textarea:-webkit-autofill:hover,
-            textarea:-webkit-autofill:focus {
-                -webkit-text-fill-color: #ffffff !important;
-                -webkit-box-shadow: 0 0 0px 1000px #0d1424 inset !important;
-                transition: background-color 5000s ease-in-out 0s;
-            }
-        </style>
-
-        <div
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
-
-            <!-- LEFT SIDE: Text, Resume & Social Links -->
-            <div style="text-align: left;">
-                <h2
-                    style="color: #f8fafc; font-size: 2.5rem; margin-bottom: 20px; font-weight: 800; text-transform: none !important;">
-                    Let's <span style="color: #3b82f6;">Connect</span>
-                </h2>
-                <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">
-                    I am currently open to Data Analyst roles and exciting data challenges. Drop a message using the
-                    form, or reach out directly!
-                </p>
-
-                <div style="margin-bottom: 30px;">
-                    <a href="resume.pdf" target="_blank"
-                        style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1rem; border: 1px solid rgba(16, 185, 129, 0.3); display: inline-block; transition: background 0.3s ease;">
-                        📄 Download ATS Resume
-                    </a>
-                </div>
-
-                <div style="display: flex; gap: 20px;">
-                    <a href="LINKEDIN_LINK_DALO" target="_blank"
-                        style="color: #94a3b8; text-decoration: none; font-weight: bold; transition: color 0.3s ease;">LinkedIn</a>
-                    <a href="GITHUB_LINK_DALO" target="_blank"
-                        style="color: #94a3b8; text-decoration: none; font-weight: bold; transition: color 0.3s ease;">GitHub</a>
-                </div>
-            </div>
-
-            <!-- RIGHT SIDE: AJAX Functional Form -->
-            <div>
-                <form id="ajax-form" style="display: flex; flex-direction: column; gap: 15px;">
-
-                    <!-- APNI WEB3FORMS ACCESS KEY YAHAN DALO -->
-                    <input type="hidden" name="access_key" value="782a9191-aae4-4574-b055-4c85d2d1c19e">
-
-                    <input type="checkbox" name="botcheck" style="display: none;">
-
-                    <input type="text" name="name" placeholder="Your Name" required
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; font-size: 1rem; outline: none;">
-
-                    <input type="email" name="email" placeholder="Your Email" required
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; font-size: 1rem; outline: none;">
-
-                    <textarea name="message" placeholder="Your Message" required rows="4"
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; font-size: 1rem; resize: none; outline: none;"></textarea>
-
-                    <button type="submit" id="submit-btn"
-                        style="background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s ease, background 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);">
-                        Send Message 🚀
-                    </button>
-
-                    <!-- Success/Error Status Text -->
-                    <p id="form-status"
-                        style="color: #10b981; font-size: 0.95rem; text-align: center; margin: 5px 0 0 0; display: none;">
-                    </p>
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- JavaScript to handle submission without redirecting -->
-    <script>
-        const contactForm = document.getElementById('ajax-form');
-        const statusText = document.getElementById('form-status');
-
-        contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            statusText.style.display = "block";
-            statusText.style.color = "#3b82f6";
-            statusText.innerHTML = "Sending message...";
-
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: json
-                });
-                const result = await response.json();
-                if (response.status === 200) {
-                    statusText.style.color = "#10b981";
-                    statusText.innerHTML = "Message sent successfully! 🚀";
-                    contactForm.reset();
-                } else {
-                    statusText.style.color = "#ef4444";
-                    statusText.innerHTML = result.message || "Something went wrong!";
-                }
-            } catch (error) {
-                statusText.style.color = "#ef4444";
-                statusText.innerHTML = "Network error! Please try again.";
-            }
-        });
-    </script>
-    </div>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content fade-in">
-            <p><strong>Mr. Uttam Tiwari</strong> Copyright © 2026</p>
-            <div class="footer-links">
-                <a href="#">Resume</a> |
-                <a href="#">Facebook</a> |
-                <a href="#">Twitter</a> |
-                <a href="#">YouTube</a>
-            </div>
-            <p>Insights Catalyst</p>
-        </div>
-    </footer>
-
-    <script>
-
-
-        // 3. Light/Dark Mode Toggle Logic
-        const themeToggleBtn = document.getElementById('theme-toggle');
-
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-
-            // Icon change karne ke liye (🌙 se ☀️ aur vice versa)
-            if (document.body.classList.contains('light-mode')) {
-                themeToggleBtn.innerHTML = '☀️';
-            } else {
-                themeToggleBtn.innerHTML = '🌙';
-            }
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-
-                    entry.target.classList.remove('show');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        const hiddenElements = document.querySelectorAll('.fade-in');
-        hiddenElements.forEach((el) => observer.observe(el));
-
-
-
-        var form = document.getElementById("my-form");
-
-        async function handleSubmit(event) {
-            event.preventDefault(); // Yeh page ko reload hone se rookta hai!
-            var status = document.getElementById("my-form-status");
-            var data = new FormData(event.target);
-
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "Thanks! Your message has been sent successfully.";
-                    form.reset(); // ✨ Yahi wo command hai jo tumhare form ki sari details ko turant reset (khaali) kar degi!
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "Oops! There was a problem submitting your form.";
-                        }
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "Oops! Network error. Please try again.";
-            });
-        }
-
-        form.addEventListener("submit", handleSubmit);
-
-
-
-
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-    <!-- === STEP 3: JAVASCRIPT LOGIC (Place right after Step 1 script) === -->
-    <script>
-        // Chart options setup
-        var options = {
-            // Sample data inspired by the Lovable screenshot (Hardcoded for Static Portfolio)
-            series: [
-                {
-                    name: 'Baseline (Original)',
-                    data: [130, 150, 160, 145, 180, 205, 230, 250] // Neeche wali blue line
-                },
-                {
-                    name: 'Scenario (Forecast)',
-                    data: [140, 165, 180, 175, 210, 230, 260, 280] // Upar wali glowing green line
-                }
-            ],
-            chart: {
-                type: 'area', // Area chart jisme gradient fill hota hai
-                height: 350,
-
-                // DYNAMIC FEATURE: Smooth animations on load
-                animations: {
-                    enabled: true,
-                    easing: 'easeinout',
-                    speed: 800
-                },
-
-                toolbar: {
-                    show: false // Hide extra menu buttons for clean look
-                },
-                background: 'transparent'
-            },
-
-            // Colors from Lovable: [Blue, Neon Green]
-            colors: ['#3b82f6', '#10b981'],
-
-            // DYNAMIC FEATURE: Smooth curved lines instead of straight lines
-            stroke: {
-                curve: 'smooth',
-                width: 3
-            },
-
-            // DYNAMIC FEATURE: Neon gradient fill under lines
-            fill: {
-                type: 'gradient',
-                gradient: {
-                    shadeIntensity: 1,
-                    opacityFrom: 0.4,
-                    opacityTo: 0.05,
-                    stops: [0, 90, 100]
-                }
-            },
-
-            dataLabels: {
-                enabled: false // Hide numbers on dots for cleaner look
-            },
-
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                labels: {
-                    style: {
-                        colors: '#94a3b8' // Muted gray text for labels
-                    }
-                },
-                axisBorder: { show: false },
-                axisTicks: { show: false }
-            },
-
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: '#94a3b8'
-                    }
-                }
-            },
-
-            // DYNAMIC FEATURE: Interactive Tooltip (Hover effects)
-            tooltip: {
-                enabled: true,
-                theme: 'dark', // Dark tooltip popup
-                shared: true, // Show both line values on one hover point
-                intersect: false,
-                y: {
-                    formatter: function (val) {
-                        return val + " Units" // Appending 'Units' to the value on hover
-                    }
-                },
-                marker: {
-                    show: true
-                }
-            },
-
-            grid: {
-                borderColor: 'rgba(255,255,255,0.05)', // Very faint grid lines
-                strokeDashArray: 4 // Dashed grid
-            },
-
-            legend: {
-                position: 'top',
-                horizontalAlign: 'right',
-                labels: {
-                    colors: '#f8fafc' // White text for legend
-                }
-            }
-        };
-
-        // Render the chart into the specified HTML div container
-        var chart = new ApexCharts(document.querySelector("#interactive-analytics-chart"), options);
-        chart.render();
-    </script>
-
 </body>
 
 </html>
