@@ -62,6 +62,8 @@
             animation: flowGrid 15s linear infinite;
         }
 
+
+
         @keyframes flowGrid {
             0% {
                 transform: translateY(0);
@@ -171,6 +173,7 @@
         }
 
         /* --- ADVANCED INTERACTIVE STATS BANNER --- */
+        /* --- CONTINUOUS AUTOMATIC SWEEPING STATS BANNER --- */
         .stats-banner {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -193,17 +196,73 @@
             cursor: pointer;
         }
 
-        /* Sweeping Light Animation (Box ke andar chalti hui roshni) */
+        /* Yeh hai wo magic jo roshni ko hamesha continuous chalata rahega */
         .stat-box::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 50%;
+            left: -150%;
+            width: 60%;
             height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.12), transparent);
             transform: skewX(-25deg);
-            transition: left 0.6s ease;
+            animation: continuousSweep 3s infinite ease-in-out;
+        }
+
+        /* Continuous Loop Animation Logic */
+        @keyframes continuousSweep {
+            0% {
+                left: -150%;
+            }
+
+            40% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
+                /* Baaki time gap lega taaki bar-bar fast na bhage */
+            }
+        }
+
+        /* Jab user mouse lekar jayega tab card lift hoga aur neon glow aayega */
+        .stat-box:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--hover-color) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--hover-color) inset;
+        }
+
+        .stat-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover .stat-icon {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin: 0 0 5px 0;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .stat-box:hover .stat-number {
+            color: var(--hover-color);
+            text-shadow: 0 0 15px var(--hover-color);
+        }
+
+        .stat-detail {
+            font-size: 0.8rem;
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .stat-box:hover::before {
@@ -294,6 +353,21 @@
         }
 
         .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in,
+        .stat-box,
+        .project-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.show,
+        .stat-box.show,
+        .project-card.show {
             opacity: 1;
             transform: translateY(0);
         }
@@ -763,16 +837,19 @@
             themeToggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
         });
 
-        // 2. Scroll Animation Observer
+        // Scroll Animation Observer (Repeating effect ke sath)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show'); // Yeh line zaroori hai taaki scroll karne par animation baar-baar repeat ho
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+        // Sabhi cards aur elements jin par yeh animation chalani hai
+        document.querySelectorAll('.fade-in, .stat-box, .project-card').forEach((el) => observer.observe(el));
 
         // 3. AJAX Contact Form Submission Handler
         const contactForm = document.getElementById('ajax-form');
