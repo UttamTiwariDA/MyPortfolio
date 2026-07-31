@@ -17,11 +17,106 @@
             scroll-behavior: smooth;
         }
 
+        /* --- ULTIMATE DYNAMIC TECH BACKGROUND --- */
         body {
-            background-color: #0f172a;
-            color: #94a3b8;
-            line-height: 1.6;
+            background-color: #050810;
+            /* Ekdum deep dark blue/black base */
+            color: #f8fafc;
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            position: relative;
             overflow-x: hidden;
+        }
+
+        /* 1. Tech Grid Pattern (Data Analyst Feel) */
+        /* 1. Elite Level Tech Grid (Fading & Moving) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -40px;
+            /* Seamless loop ke liye thoda upar se start kiya */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: calc(100vh + 40px);
+
+            /* Grid ki lines ko thoda aur sharp kiya */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+            /* Dabbe ka size thoda bada kiya clean look ke liye */
+
+            z-index: -2;
+
+            /* THE REAL MAGIC: Fading Edges (Radial Mask) */
+            /* Isse grid sirf center mein dikhega aur sides mein andhere mein ghul jayega */
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
+
+            /* Data Flow Animation */
+            animation: flowGrid 15s linear infinite;
+        }
+
+        /* Grid ko dheere-dheere neeche move karne ka animation */
+        @keyframes flowGrid {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(40px);
+            }
+
+            /* Exact ek grid box jitna move karega taaki loop smooth ho */
+        }
+
+        /* 2. Dynamic Moving Glowing Lights (Alive Feel) */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Lovable jaisi Green aur Blue glowing lights */
+            background:
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+            z-index: -1;
+            /* Dheere-dheere ghoomega jisse alive lagega */
+            animation: rotateGlow 30s linear infinite;
+            pointer-events: none;
+            /* Mouse iske aar-paar ja sake */
+        }
+
+        /* Background Animation Logic */
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Cards ke shadow ko thoda aur premium karna */
+        .card,
+        .stat-box,
+        .badge-item,
+        .project-card,
+        #sales-chart-container {
+            background: rgba(13, 20, 36, 0.6) !important;
+            /* Thoda aur transparent */
+            backdrop-filter: blur(16px);
+            /* Kaanch ko aur dhundla kiya */
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            /* Inner light effect */
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         h1,
@@ -580,6 +675,183 @@
             background-color: #e2e8f0 !important;
             color: #475569 !important;
         }
+
+
+        /* --- Advanced Data Analyst Theme & Glassmorphism --- */
+        :root {
+            --bg-primary: #090d16;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-blue: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+        }
+
+        /* Glassmorphism Cards aur Hover Effect */
+        .card,
+        .stat-box,
+        .badge-item,
+        .project-card {
+            background: var(--bg-card) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color) !important;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover,
+        .stat-box:hover,
+        .badge-item:hover,
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+
+        /* --- ELITE STATS BANNER WITH ADVANCED ANIMATIONS --- */
+        .stats-banner {
+            display: grid;
+            /* 4 cards ko ek line mein perfectly fit karne ke liye */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 50px auto;
+            max-width: 1100px;
+            padding: 0 20px;
+        }
+
+        .stat-box {
+            background: rgba(13, 20, 36, 0.6) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            /* Bouncy hover effect ke liye cubic-bezier use kiya hai */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* Sweeping Light Animation (Box ke andar chalti hui roshni) */
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+
+        /* Jab mouse aayega toh roshni cross karegi aur box glow karega */
+        .stat-box:hover::before {
+            left: 200%;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--hover-color) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--hover-color) inset;
+        }
+
+        .stat-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Mouse aane par icon ghoomega aur bada hoga */
+        .stat-box:hover .stat-icon {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin: 0 0 5px 0;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        /* Mouse aane par number ka color change hoga aur chamkega */
+        .stat-box:hover .stat-number {
+            color: var(--hover-color);
+            text-shadow: 0 0 15px var(--hover-color);
+        }
+
+        .stat-box p {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            margin: 0 0 8px 0;
+            font-weight: 600;
+        }
+
+        /* Naya detail tag jo metrics ko aur professional dikhayega */
+        .stat-detail {
+            font-size: 0.8rem;
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .stat-box h3 {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin: 0 0 5px 0;
+        }
+
+        .stat-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Sliding Tools Ribbon Styling */
+        .tools-marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            margin: 30px 0;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: scrollTools 20s linear infinite;
+        }
+
+        .marquee-track span {
+            display: inline-block;
+            padding: 0 30px;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        @keyframes scrollTools {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 
@@ -601,17 +873,113 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero fade-in">
-        <h1>Hello, I'm Mr. Uttam Tiwari.</h1>
-        <h2>Aspiring Data Analyst | SQL, Python, Excel & Machine Learning</h2>
-        <p>I turn complex data into <span class="highlight"> actionable insights </span> for business growth.</p>
-        <div class="buttons">
-            <a href="https://drive.google.com/file/d/1tSPxv7z6DvRmdkUjLHovAdAptN_O34Qa/view?usp=sharing" target="_blank"
-                class="btn primary">View Resume</a>
-            <a href="https://github.com/UttamTiwariDA" target="_blank" class="btn secondary">GitHub</a>
+    <!-- Main Hero Section (Dabba 1: Isme display flex hai jo left-right karega) -->
+    <div class="hero-section"
+        style="display: flex; align-items: center; gap: 50px; padding: 60px 20px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap;">
+
+        <!-- Left Side: Sirf Photo Wala Dabba -->
+        <div class="profile-image" style="flex-shrink: 0; margin: 0 auto;">
+            <img src="profile_pic.jpg" alt="Mr. Uttam Tiwari"
+                style="width: 220px; height: 220px; border-radius: 50%; border: 4px solid #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); object-fit: cover;">
         </div>
-    </header>
+
+        <!-- Right Side: Text Wala Dabba (Yeh dhyan se dekho, saara text iske andar hai) -->
+        <div class="about-content" style="flex: 1; min-width: 300px; text-align: left;">
+
+            <div
+                style="display: inline-block; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3); margin-bottom: 15px;">
+                Open to Data Analytics Roles
+            </div>
+
+            <h1 style="font-size: 3.5rem; margin: 0 0 10px 0; color: #f8fafc; font-weight: 800;">
+                Hi, I'm <span style="color: #3b82f6;">Uttam Tiwari</span>
+            </h1>
+
+            <h2 style="font-size: 1.5rem; color: #94a3b8; margin: 0 0 20px 0; font-weight: 500;">
+                Data Analyst | BCA & ADCA
+            </h2>
+
+            <p style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
+                I specialize in transforming raw datasets into actionable business insights. With a strong foundation in
+                Python, SQL (MySQL Workbench), and Pandas, I build dynamic dashboards and write complex queries to solve
+                real-world problems. My focus is always on data accuracy, clean documentation, and high-impact
+                reporting.
+            </p>
+
+            <!-- Action Buttons Wala Dabba -->
+            <div class="hero-buttons" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#projects"
+                    style="background: #3b82f6; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); transition: transform 0.3s ease;">View
+                    Projects</a>
+                <a href="https://github.com/UttamTiwariDA" target="_blank"
+                    style="background: rgba(255,255,255,0.05); color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s ease;">GitHub
+                    Profile</a>
+            </div>
+
+        </div> <!-- Yahan Right Side (Text Wala Dabba) band hota hai -->
+
+    </div> <!-- Yahan Main Hero Section band hota hai -->
+
+    <!-- === ADVANCED HERO SECTION KE NICHE YEH PASTE KARNA HAI === -->
+
+    <!-- === ADVANCED IMPACT STATS BANNER === -->
+    <div class="stats-banner">
+
+        <!-- Box 1: BI & Visualization (Neon Blue Glow) -->
+        <div class="stat-box" style="--hover-color: #3b82f6;">
+            <div class="stat-icon">📊</div>
+            <h3 class="stat-number">5+</h3>
+            <p>Dashboards Built</p>
+            <span class="stat-detail">Power BI & Excel</span>
+        </div>
+
+        <!-- Box 2: Database & Extraction (Neon Green Glow) -->
+        <div class="stat-box" style="--hover-color: #10b981;">
+            <div class="stat-icon">🗄️</div>
+            <h3 class="stat-number">100+</h3>
+            <p>SQL Queries</p>
+            <span class="stat-detail">Complex Extraction</span>
+        </div>
+
+        <!-- Box 3: Real Case Studies (Neon Purple Glow) -->
+        <div class="stat-box" style="--hover-color: #8b5cf6;">
+            <div class="stat-icon">📈</div>
+            <h3 class="stat-number">2+</h3>
+            <p>Business Case Studies</p>
+            <span class="stat-detail">Simulations & Reports</span>
+        </div>
+
+        <!-- Box 4: Data Preparation (Neon Orange Glow) -->
+        <div class="stat-box" style="--hover-color: #f59e0b;">
+            <div class="stat-icon">🧹</div>
+            <h3 class="stat-number">50K+</h3>
+            <p>Rows Cleaned</p>
+            <span class="stat-detail">Python & Pandas</span>
+        </div>
+
+    </div>
+
+    <!-- 2. Sliding Tools Ribbon -->
+    <div class="tools-marquee">
+        <div class="marquee-track">
+            <!-- Tumhari strong skills yahan add ki hain -->
+            <span>🐍 Python</span>
+            <span>🐼 Pandas</span>
+            <span>📊 SQL (MySQL)</span>
+            <span>📈 Power BI</span>
+            <span>📉 Excel</span>
+            <span>🔢 NumPy</span>
+            <span>🧠 Machine Learning</span>
+            <!-- Continuous loop banane ke liye list ko repeat kiya gaya hai -->
+            <span>🐍 Python</span>
+            <span>🐼 Pandas</span>
+            <span>📊 SQL (MySQL)</span>
+            <span>📈 Power BI</span>
+            <span>📉 Excel</span>
+            <span>🔢 NumPy</span>
+            <span>🧠 Machine Learning</span>
+        </div>
+    </div>
 
     <!-- Tech Stack Section -->
     <!-- Tech Stack Section -->
@@ -655,6 +1023,32 @@
             </div>
         </div>
     </section>
+
+
+    <!-- === STEP 2: HTML CONTAINER FOR CHART === -->
+    <!-- Isko tum kisi naye class=section ke andar bhi rakh sakte ho -->
+    <div class="project-card"
+        style="padding: 25px; margin: 30px auto; max-width: 800px; background: #0f172a; border-radius: 12px; border: 1px solid #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+            <div>
+                <h3 style="color: #f8fafc; margin: 0 0 5px 0; font-size: 1.4rem;">Scenario vs Baseline Growth</h3>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Business Forecast Simulation (Static Data)</p>
+            </div>
+            <!-- glowing green metric -->
+            <div
+                style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 5px 15px; border-radius: 20px; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3);">
+                +12% Revenue Lift
+            </div>
+        </div>
+
+        <!-- Yahan ApexCharts hamara chart render (draw) karega -->
+        <div id="interactive-analytics-chart"></div>
+
+        <p style="color: #64748b; font-size: 0.8rem; text-align: center; margin-top: 15px;">
+            Hint: Hover on lines to see dynamic numbers.
+        </p>
+    </div>
 
     <!-- Featured Projects Section -->
     <section id="projects" class="projects">
@@ -756,23 +1150,6 @@
         </div>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="about fade-in">
-        <h3>ABOUT ME</h3>
-        <div class="about-content">
-            <div class="profile-pic">
-                <img src="" alt="Mr. Uttam Tiwari">
-            </div>
-            <div class="about-text">
-                <p>Uttam Tiwari is a professional data analyst and collaborative professional dedicated to uncovering
-                    insights, transforming raw data into structured and actionable data to solve business problems.</p>
-                <p>Passion for data analysis, and driving decisions through analytical approach to business challenges
-                    and creating visualizations to bring complex data into business environments.</p>
-                <p>Soft skills: communication, problem-solving, adaptability, team collaboration and leadership that
-                    focus on effective communication and efficient team collaboration.</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Work Experience Section -->
     <section class="work-experience fade-in">
@@ -1027,7 +1404,123 @@
 
         form.addEventListener("submit", handleSubmit);
 
+
+
+
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!-- === STEP 3: JAVASCRIPT LOGIC (Place right after Step 1 script) === -->
+    <script>
+        // Chart options setup
+        var options = {
+            // Sample data inspired by the Lovable screenshot (Hardcoded for Static Portfolio)
+            series: [
+                {
+                    name: 'Baseline (Original)',
+                    data: [130, 150, 160, 145, 180, 205, 230, 250] // Neeche wali blue line
+                },
+                {
+                    name: 'Scenario (Forecast)',
+                    data: [140, 165, 180, 175, 210, 230, 260, 280] // Upar wali glowing green line
+                }
+            ],
+            chart: {
+                type: 'area', // Area chart jisme gradient fill hota hai
+                height: 350,
+
+                // DYNAMIC FEATURE: Smooth animations on load
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800
+                },
+
+                toolbar: {
+                    show: false // Hide extra menu buttons for clean look
+                },
+                background: 'transparent'
+            },
+
+            // Colors from Lovable: [Blue, Neon Green]
+            colors: ['#3b82f6', '#10b981'],
+
+            // DYNAMIC FEATURE: Smooth curved lines instead of straight lines
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            },
+
+            // DYNAMIC FEATURE: Neon gradient fill under lines
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.4,
+                    opacityTo: 0.05,
+                    stops: [0, 90, 100]
+                }
+            },
+
+            dataLabels: {
+                enabled: false // Hide numbers on dots for cleaner look
+            },
+
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                labels: {
+                    style: {
+                        colors: '#94a3b8' // Muted gray text for labels
+                    }
+                },
+                axisBorder: { show: false },
+                axisTicks: { show: false }
+            },
+
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: '#94a3b8'
+                    }
+                }
+            },
+
+            // DYNAMIC FEATURE: Interactive Tooltip (Hover effects)
+            tooltip: {
+                enabled: true,
+                theme: 'dark', // Dark tooltip popup
+                shared: true, // Show both line values on one hover point
+                intersect: false,
+                y: {
+                    formatter: function (val) {
+                        return val + " Units" // Appending 'Units' to the value on hover
+                    }
+                },
+                marker: {
+                    show: true
+                }
+            },
+
+            grid: {
+                borderColor: 'rgba(255,255,255,0.05)', // Very faint grid lines
+                strokeDashArray: 4 // Dashed grid
+            },
+
+            legend: {
+                position: 'top',
+                horizontalAlign: 'right',
+                labels: {
+                    colors: '#f8fafc' // White text for legend
+                }
+            }
+        };
+
+        // Render the chart into the specified HTML div container
+        var chart = new ApexCharts(document.querySelector("#interactive-analytics-chart"), options);
+        chart.render();
+    </script>
+
 </body>
 
 </html>
