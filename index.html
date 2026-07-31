@@ -170,7 +170,7 @@
             color: #3b82f6;
         }
 
-        /* Stats Banner */
+        /* --- ADVANCED INTERACTIVE STATS BANNER --- */
         .stats-banner {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -181,21 +181,65 @@
         }
 
         .stat-box {
+            background: rgba(13, 20, 36, 0.6) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             padding: 20px;
             text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
             cursor: pointer;
+        }
+
+        /* Sweeping Light Animation (Box ke andar chalti hui roshni) */
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+
+        .stat-box:hover::before {
+            left: 200%;
+        }
+
+        /* Hover par card bada hoga aur neon border aayega */
+        .stat-box:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--hover-color) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--hover-color) inset;
         }
 
         .stat-icon {
             font-size: 2.2rem;
             margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Mouse aane par icon ghoomega aur bada hoga */
+        .stat-box:hover .stat-icon {
+            transform: scale(1.2) rotate(8deg);
         }
 
         .stat-number {
             font-size: 2.2rem;
             font-weight: 800;
             color: #f8fafc;
-            margin-bottom: 5px;
+            margin: 0 0 5px 0;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        /* Mouse aane par number ka color change hoga aur chamkega */
+        .stat-box:hover .stat-number {
+            color: var(--hover-color);
+            text-shadow: 0 0 15px var(--hover-color);
         }
 
         .stat-detail {
@@ -205,6 +249,7 @@
             padding: 4px 10px;
             border-radius: 20px;
             display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         /* Tools Marquee */
@@ -385,32 +430,41 @@
         </div>
     </div>
 
-    <!-- Stats Banner -->
+    <!-- === ADVANCED IMPACT STATS BANNER === -->
     <div class="stats-banner fade-in">
-        <div class="stat-box">
+
+        <!-- Box 1: Dashboards Built (Neon Blue) -->
+        <div class="stat-box" style="--hover-color: #3b82f6;">
             <div class="stat-icon">📊</div>
             <h3 class="stat-number">5+</h3>
-            <p style="color:#e2e8f0; font-weight:600;">Dashboards Built</p>
+            <p style="color:#e2e8f0; font-weight:600; margin:0 0 5px 0; font-size:1rem;">Dashboards Built</p>
             <span class="stat-detail">Power BI & Excel</span>
         </div>
-        <div class="stat-box">
+
+        <!-- Box 2: SQL Queries (Neon Green) -->
+        <div class="stat-box" style="--hover-color: #10b981;">
             <div class="stat-icon">🗄️</div>
             <h3 class="stat-number">100+</h3>
-            <p style="color:#e2e8f0; font-weight:600;">SQL Queries</p>
+            <p style="color:#e2e8f0; font-weight:600; margin:0 0 5px 0; font-size:1rem;">SQL Queries</p>
             <span class="stat-detail">Complex Extraction</span>
         </div>
-        <div class="stat-box">
+
+        <!-- Box 3: Case Studies (Neon Purple) -->
+        <div class="stat-box" style="--hover-color: #8b5cf6;">
             <div class="stat-icon">📈</div>
             <h3 class="stat-number">2+</h3>
-            <p style="color:#e2e8f0; font-weight:600;">Case Studies</p>
+            <p style="color:#e2e8f0; font-weight:600; margin:0 0 5px 0; font-size:1rem;">Case Studies</p>
             <span class="stat-detail">Simulations & Reports</span>
         </div>
-        <div class="stat-box">
+
+        <!-- Box 4: Rows Cleaned (Neon Orange) -->
+        <div class="stat-box" style="--hover-color: #f59e0b;">
             <div class="stat-icon">🧹</div>
             <h3 class="stat-number">50K+</h3>
-            <p style="color:#e2e8f0; font-weight:600;">Rows Cleaned</p>
+            <p style="color:#e2e8f0; font-weight:600; margin:0 0 5px 0; font-size:1rem;">Rows Cleaned</p>
             <span class="stat-detail">Python & Pandas</span>
         </div>
+
     </div>
 
     <!-- Sliding Tools Ribbon -->
