@@ -305,6 +305,35 @@
         .footer-links a:hover {
             color: #3b82f6;
         }
+
+        @media (max-width: 768px) {
+
+            /* Navbar ko row mein hi rakhenge, stack nahi karenge */
+            .navbar {
+                padding: 12px 20px !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+            }
+
+            /* Logo ka size mobile ke liye thoda compact karenge */
+            .logo {
+                font-size: 0.95rem !important;
+                letter-spacing: 0.5px;
+            }
+
+            /* Right side ke links aur theme button ke beech ka gap kam karenge */
+            .nav-right-container {
+                gap: 12px !important;
+            }
+
+            .nav-links {
+                gap: 10px !important;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem !important;
+            }
+        }
     </style>
 </head>
 
