@@ -354,12 +354,25 @@
             gap: 15px;
         }
 
+        /* Jab user mouse ko Tata ya Deloitte wale certificate box par lekar jayega */
+        .badges-grid a.badge-item:hover {
+            transform: translateY(-4px);
+            /* Box halka sa upar ki taraf uthega */
+            border-color: #10b981 !important;
+            /* Border ka color green (emerald) ho jayega */
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+            /* Green glow effect aayega */
+        }
+
+
         .badge-item {
             background: #fff;
             border-radius: 8px;
             padding: 10px;
             text-align: center;
         }
+
+
 
         .badge {
             width: 100%;
@@ -804,7 +817,7 @@
         <div class="skills-container">
             <!-- Left Side: Skills (Updated without Docker, CI/CD, AWS, GCP) -->
             <div class="skills-left">
-                <h3>SKILLS & CERTIFICATIONS</h3>
+                <h3>SKILLS</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
                         <!-- Tableau Direct SVG Icon -->
@@ -852,11 +865,31 @@
             <div class="skills-right">
                 <h3>CERTIFICATIONS</h3>
                 <div class="badges-grid">
-                    <div class="badge-item"><img src="" alt="Google Data Analytics" class="badge"></div>
-                    <div class="badge-item"><img src="" alt="Microsoft Power BI" class="badge"></div>
-                    <div class="badge-item"><img src="" alt="Microsoft Azure" class="badge"></div>
-                    <div class="badge-item"><img src="" alt="Microsoft BI Data Analyst" class="badge"></div>
-                    <div class="badge-item"><img src="" alt="Machine Learning" class="badge"></div>
+                    <!-- Tata Certificate Box -->
+                    <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_69c166ade17b6e154c5fc053_1776150063428_completion_certificate.pdf"
+                        target="_blank" class="badge-item"
+                        style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: #1e293b; border: 1px solid #334155; padding: 15px; border-radius: 8px; transition: 0.3s;">
+                        <!-- Tata Logo ya koi chota icon -->
+                        <img src="tata_logo.png" alt="TATA Logo"
+                            style="width: 40px; height: 40px; object-fit: contain; background: #fff; padding: 4px; border-radius: 6px;">
+                        <div style="text-align: left;">
+                            <p style="color: #f8fafc; font-weight: 600; font-size: 0.9rem;">Tata Data Analytics</p>
+                            <p style="color: #3b82f6; font-size: 0.75rem;">View Certificate ↗</p>
+                        </div>
+                    </a>
+
+                    <!-- Deloitte Certificate Box -->
+                    <a href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_69c166ade17b6e154c5fc053_1781413618556_completion_certificate.pdf"
+                        target="_blank" class="badge-item"
+                        style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: #1e293b; border: 1px solid #334155; padding: 15px; border-radius: 8px; transition: 0.3s;">
+                        <!-- Deloitte Logo ya koi chota icon -->
+                        <img src="deloitte_logo.png" alt="Deloitte Logo"
+                            style="width: 40px; height: 40px; object-fit: contain; background: #fff; padding: 4px; border-radius: 6px;">
+                        <div style="text-align: left;">
+                            <p style="color: #f8fafc; font-weight: 600; font-size: 0.9rem;">Deloitte Data Analytics</p>
+                            <p style="color: #3b82f6; font-size: 0.75rem;">View Certificate ↗</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
