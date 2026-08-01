@@ -21,12 +21,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+            /* Yahan se scroll-behavior: smooth; hata diya gaya hai taaki refresh bug na aaye */
         }
 
         body {
             background-color: #030712;
-            /* Ekdum deep rich dark shade */
             background-image:
                 radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
@@ -154,11 +153,14 @@
         }
 
         /* Fixed Hero Section Animations */
+        /* Fixed Hero Section Animations */
         .hero-container {
             width: 100%;
             max-width: 1100px;
-            margin: 50px auto;
-            padding: 40px 30px;
+            margin: 20px auto 15px;
+            /* Yahan 50px auto ki jagah margin kam kar diya hai */
+            padding: 30px;
+            /* Padding bhi 40px se 30px kardi taaki height thodi compact ho */
             background: rgba(13, 20, 36, 0.7);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -303,7 +305,8 @@
 ========================================= */
         @media (max-width: 768px) {
             .hero-container {
-                margin: 20px auto 10px;
+                margin: 40px auto 10px;
+                /* Upar extra space diya taaki photo na kate */
                 padding: 10px;
                 background: transparent;
                 border: none;
@@ -691,9 +694,10 @@
                 font-size: 0.8rem !important;
             }
 
-            div,
-            footer,
-            .project-card {
+            /* Yahan broad "div" selector ko theek kar diya gaya hai */
+            .project-card,
+            .stat-box,
+            footer {
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
                 background: #0f172a !important;
@@ -734,7 +738,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section (FIXED: Removed "fade-in" class so it doesn't conflict with slideUp keyframe) -->
+    <!-- Hero Section -->
     <div class="hero-container">
         <div class="hero-content">
 
@@ -1058,6 +1062,7 @@
 
         </div>
     </div>
+
     <!-- Professional Experience & Simulations Section -->
     <div id="experience" style="max-width: 1100px; margin: 60px auto; padding: 20px;" class="fade-in">
         <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
@@ -1316,14 +1321,19 @@
 
     <!-- Consolidated JavaScript Logic -->
     <script>
-        // 1. Theme Toggle Logic
+        // 1. Browser Refresh Bug Fix (Har baar top par aayega, shift nahi hoga)
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        // 2. Theme Toggle Logic
         const themeToggleBtn = document.getElementById('theme-toggle');
         themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
             themeToggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
         });
 
-        // 2. Scroll Animation Observer (FIXED: Targeted correctly to prevent layout jumping)
+        // 3. Scroll Animation Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -1334,10 +1344,10 @@
             });
         }, { threshold: 0.1 });
 
-        // Sabhi main containers ko observe kar raha hai taaki pure blocks cleanly fade-in ho.
+        // Sabhi main containers ko observe kar raha hai
         document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
-        // 3. AJAX Contact Form Submission Handler
+        // 4. AJAX Contact Form Submission Handler
         const contactForm = document.getElementById('ajax-form');
         const statusText = document.getElementById('form-status');
 
@@ -1375,7 +1385,7 @@
             }
         });
 
-        // 4. Forecast Chart Rendering (Chart.js)
+        // 5. Forecast Chart Rendering (Chart.js)
         const ctx = document.getElementById('olistChart').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
