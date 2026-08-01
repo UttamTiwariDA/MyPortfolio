@@ -710,24 +710,14 @@
     </div>
 
     <!-- Forecast Line Chart Section -->
-    <div style="width: 100%; max-width: 1100px; margin: 60px auto; padding: 30px 20px; background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-sizing: border-box;"
-        class="fade-in">
-        <div
-            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
-            <div>
-                <h3
-                    style="color: #f8fafc; font-size: 1.5rem; font-weight: 800; margin: 0 0 5px 0; text-transform: uppercase;">
-                    Scenario vs Baseline Growth</h3>
-                <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Business Forecast Simulation (Static Data)</p>
-            </div>
-            <div
-                style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3);">
-                +12% Revenue Lift
-            </div>
-        </div>
-        <div
-            style="background: rgba(255, 255, 255, 0.02); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
-            <canvas id="forecastChart" style="width: 100%; max-height: 350px;"></canvas>
+    <div
+        style="max-width: 380px; margin: 30px auto; background: #0f172a; padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+        <h4
+            style="color: #f8fafc; text-align: center; margin-bottom: 15px; font-family: sans-serif; font-size: 1.1rem;">
+            📊 Olist Customer Retention vs Churn
+        </h4>
+        <div style="position: relative; width: 100%; height: 220px;">
+            <canvas id="olistChart"></canvas>
         </div>
     </div>
 
@@ -1079,73 +1069,35 @@
         });
 
         // 4. Forecast Chart Rendering (Chart.js)
-        const ctxForecast = document.getElementById('forecastChart').getContext('2d');
-        const forecastGradient = ctxForecast.createLinearGradient(0, 0, 0, 300);
-        forecastGradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
-        forecastGradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
-
-        new Chart(ctxForecast, {
-            type: 'line',
+        const ctx = document.getElementById('olistChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-                datasets: [
-                    {
-                        label: 'Baseline (Original)',
-                        data: [150, 165, 170, 185, 175, 195, 210, 225, 240, 255],
-                        borderColor: '#60a5fa',
-                        backgroundColor: 'transparent',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        pointRadius: 3,
-                        pointHoverRadius: 6
-                    },
-                    {
-                        label: 'Scenario (Forecast)',
-                        data: [160, 180, 190, 205, 195, 220, 240, 260, 280, 295],
-                        borderColor: '#3b82f6',
-                        backgroundColor: forecastGradient,
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 3,
-                        pointHoverRadius: 6
-                    }
-                ]
+                labels: ['Single-Time Buyers (97.68%)', 'Retained Customers (2.32%)'],
+                datasets: [{
+                    data: [97.68, 2.32],
+                    backgroundColor: [
+                        '#ef4444',
+                        '#10b981'
+                    ],
+                    borderWidth: 0
+                }]
             },
             options: {
                 responsive: true,
-                interaction: {
-                    mode: 'index',
-                    intersect: false,
-                },
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'top',
-                        align: 'end',
+                        position: 'bottom',
                         labels: {
                             color: '#94a3b8',
-                            font: { size: 12 },
-                            boxWidth: 12,
-                            usePointStyle: true
+                            font: { size: 11 },
+                            boxWidth: 12
                         }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        min: 100,
-                        max: 350,
-                        ticks: { color: '#64748b', stepSize: 50 },
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' }
-                    },
-                    x: {
-                        ticks: { color: '#64748b' },
-                        grid: { display: false }
                     }
                 }
             }
-        });
-    </script>
+        });    </script>
 </body>
 
 </html>
