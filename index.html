@@ -399,6 +399,85 @@
             background-color: rgba(248, 250, 252, 0.85) !important;
         }
 
+        /* Jab body par light-mode class hogi, tab yeh saare elements automatically dark aur readable ho jayenge */
+        body.light-mode .stat-number {
+            color: #0f172a !important;
+            /* Numbers ekdum dark slate ho jayenge */
+            text-shadow: none !important;
+        }
+
+        body.light-mode .stat-box p,
+        body.light-mode .stat-detail,
+        body.light-mode p {
+            color: #475569 !important;
+            /* Descriptions aur details dark gray ho jayengi */
+        }
+
+        body.light-mode .stat-box {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+        }
+
+
+        /* 1. Certification Badges ke liye Light Mode */
+        body.light-mode .badge-item {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
+        }
+
+        body.light-mode .badge-item p {
+            color: #0f172a !important;
+        }
+
+        /* 2. Sliding Tools Ribbon (Marquee) ke liye Light Mode */
+        body.light-mode .tools-marquee {
+            background: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        body.light-mode .marquee-track span {
+            color: #475569 !important;
+        }
+
+        /* 3. Inline style wale containers (Forecast aur Contact section) ke liye override */
+        body.light-mode div[style*="background: rgba(13, 20, 36, 0.6)"] {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        /* 4. Contact Form ke Inputs aur Textarea ke liye Light Mode */
+        body.light-mode #ajax-form input,
+        body.light-mode #ajax-form textarea {
+            background: #f1f5f9 !important;
+            color: #0f172a !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        body.light-mode #ajax-form input::placeholder,
+        body.light-mode #ajax-form textarea::placeholder {
+            color: #94a3b8 !important;
+        }
+
+        /* Technical Arsenal aur baaki sabhi skill tags ke liye Light Mode fix */
+        body.light-mode #skills span,
+        body.light-mode .project-card span[style*="background"],
+        body.light-mode div[style*="background: rgba(59, 130, 246, 0.15)"],
+        body.light-mode div[style*="background: rgba(16, 185, 129, 0.1)"],
+        body.light-mode div[style*="background: rgba(139, 92, 246, 0.1)"],
+        body.light-mode div[style*="background: rgba(245, 158, 11, 0.1)"] {
+            background: #f1f5f9 !important;
+            color: #0f172a !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Technical Arsenal ke category headings (Languages, Databases, etc.) ke liye */
+        body.light-mode #skills h3 {
+            border-bottom-color: rgba(59, 130, 246, 0.3) !important;
+        }
+
         footer {
             background-color: #080c17;
             padding: 20px 50px;
