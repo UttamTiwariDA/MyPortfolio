@@ -910,7 +910,8 @@
                         backgroundColor: 'transparent',
                         borderWidth: 2,
                         tension: 0.4,
-                        pointRadius: 0
+                        pointRadius: 3,
+                        pointHoverRadius: 6
                     },
                     {
                         label: 'Scenario (Forecast)',
@@ -920,12 +921,17 @@
                         borderWidth: 3,
                         fill: true,
                         tension: 0.4,
-                        pointRadius: 0
+                        pointRadius: 3,
+                        pointHoverRadius: 6
                     }
                 ]
             },
             options: {
                 responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
                 plugins: {
                     legend: {
                         position: 'top',
