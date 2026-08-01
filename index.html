@@ -544,30 +544,39 @@
             transform: translateY(0);
         }
 
-        /* MOBILE STYLES */
+        /* =========================================
+           MOBILE STYLES (Fixed Navbar Layout)
+        ========================================= */
         @media (max-width: 768px) {
             .custom-cursor {
                 display: none !important;
             }
 
+            /* Navbar Mobile Fix */
             .navbar {
                 padding: 15px 20px !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
+                flex-wrap: wrap !important;
+                justify-content: flex-start !important;
             }
 
             .logo {
-                font-size: 1.1rem !important;
+                font-size: 1.2rem !important;
+                white-space: nowrap;
+                /* Taki logo break na ho */
             }
 
             .nav-right-container {
-                gap: 15px !important;
+                width: 100%;
+                /* Force nav links to next line */
+                justify-content: center !important;
+                margin-top: 15px;
             }
 
             .nav-links {
-                gap: 12px !important;
+                gap: 15px !important;
                 display: flex;
-                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .nav-links a {
@@ -577,6 +586,13 @@
 
             .nav-links a::after {
                 display: none;
+            }
+
+            /* Fix Moon Icon Overflow */
+            #theme-toggle {
+                position: absolute;
+                top: 14px;
+                right: 20px;
             }
 
             .hero-container {
@@ -644,9 +660,7 @@
             }
         }
 
-        /* =========================================
-           LIGHT MODE STYLES (Fixed Muddy Blurs)
-        ========================================= */
+        /* LIGHT MODE STYLES */
         body.light-mode {
             background-color: #f8fafc !important;
             color: #1e293b !important;
@@ -745,7 +759,6 @@
             border-bottom-color: rgba(59, 130, 246, 0.3) !important;
         }
 
-        /* 🚨 NEW: Fixed Hero, Contact, Footer, and Chart Container for Light Mode 🚨 */
         body.light-mode .hero-container,
         body.light-mode #contact,
         body.light-mode footer,
@@ -754,7 +767,6 @@
             border-color: #cbd5e1 !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
             backdrop-filter: none !important;
-            /* Removes muddy blur */
         }
 
         body.light-mode .hero-title,
@@ -883,7 +895,7 @@
                     Hi, I'm <span class="hero-name">Mr. Uttam Tiwari</span>
                 </h1>
 
-                <!-- 2. Auto Typing Effect Here (FIXED HEIGHT TO PREVENT JUMP) -->
+                <!-- 2. Auto Typing Effect Here -->
                 <div class="hero-subtitle">
                     <span id="typed-text"></span><span class="typing-cursor"></span>
                 </div>
@@ -1025,7 +1037,7 @@
         </div>
     </div>
 
-    <!-- RESTORED: All 6 Featured Projects -->
+    <!-- Featured Projects -->
     <div id="projects" style="max-width: 1100px; margin: 60px auto; padding: 20px;" class="fade-in">
         <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
             Featured <span style="color: #3b82f6;">Projects</span>
@@ -1252,7 +1264,7 @@
         </div>
     </div>
 
-    <!-- RESTORED: Complete Contact Section -->
+    <!-- Complete Contact Section -->
     <div id="contact"
         style="width: 100%; max-width: 1100px; margin: 80px auto 20px; padding: 50px 20px; background: rgba(13, 20, 36, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-sizing: border-box;"
         class="fade-in">
@@ -1356,7 +1368,7 @@
 
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Vanilla Tilt.js (3D Effect ke liye CDN) -->
+    <!-- Vanilla Tilt.js (3D Effect) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
     <!-- Consolidated JavaScript Logic -->
