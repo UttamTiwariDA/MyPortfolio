@@ -25,8 +25,17 @@
         }
 
         body {
-            background-color: #0b0f19 !important;
-            color: #f8fafc !important;
+            background-color: #030712;
+            /* Ekdum deep rich dark shade */
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
             -webkit-text-size-adjust: 100%;
         }
@@ -728,29 +737,127 @@
             Featured <span style="color: #3b82f6;">Projects</span>
         </h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+
+            <!-- Project 1: CFO Financial Analytics Pipeline -->
             <div class="project-card" style="padding: 30px;">
                 <div
-                    style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
-                    Excel & Power Query</div>
-                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Comprehensive Sales Dashboard</h3>
-                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Developed a fully
-                    interactive Sales Data Dashboard utilizing Power Query for robust data cleaning and Pivot Tables.
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3);">Python
+                        • MySQL • Power BI</span>
+                    <span
+                        style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">📈
+                        CFO Level ROI</span>
+                </div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">CFO Financial Analytics Pipeline</h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
+                    Engineered an enterprise-grade pipeline. Used Python & SQLAlchemy for ETL into MySQL, visualized via
+                    an app-style Power BI dashboard featuring dynamic heatmaps and tooltips.
                 </p>
-                <a href="#" style="color: #3b82f6; font-weight: bold;">View Documentation ➔</a>
+                <a href="#" style="color: #3b82f6; font-weight: bold; text-decoration: none;">View Documentation ➔</a>
             </div>
+
+            <!-- Project 2: Superstore Accuracy-First Analytics -->
             <div class="project-card" style="padding: 30px;">
                 <div
-                    style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(139, 92, 246, 0.3);">
-                    Python & GridSearchCV</div>
-                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">ML Workflow & Hyperparameter Tuning
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <span
+                        style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3);">SQL
+                        • DAX • Power BI</span>
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">🎯
+                        100% Data Integrity</span>
+                </div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Superstore Accuracy-First Analytics
                 </h3>
-                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Engineered robust
-                    machine learning workflows focusing on model pipelines and optimizing hyperparameters.</p>
-                <a href="#" style="color: #3b82f6; font-weight: bold;">View Source Code ➔</a>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
+                    Focused on row-level integrity. Audited data using 8 complex MySQL queries and solved complex
+                    Context Transition errors using advanced DAX (`RANKX`, `ALLSELECTED`).
+                </p>
+                <a href="#" style="color: #3b82f6; font-weight: bold; text-decoration: none;">View Source Code ➔</a>
             </div>
+
+            <!-- Project 3: End-to-End Olist E-Commerce Analysis -->
+            <div class="project-card" style="padding: 30px;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <span
+                        style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(139, 92, 246, 0.3);">Python
+                        • Pandas • SQL</span>
+                    <span
+                        style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">⚠️
+                        97% Churn Analysis</span>
+                </div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Olist E-Commerce Full-Cycle Analysis
+                </h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
+                    Handled 100k+ orders. Cleaned data via Python, wrote SQL queries to uncover customer churn patterns
+                    (97%), and optimized Power BI geo-mapping performance by 60%.
+                </p>
+                <a href="#" style="color: #3b82f6; font-weight: bold; text-decoration: none;">View Project ➔</a>
+            </div>
+
+            <!-- Project 4: E-Commerce RTO & Fraud Detection Pipeline -->
+            <div class="project-card" style="padding: 30px;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <span
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(245, 158, 11, 0.3);">Flask
+                        • Random Forest • Cloud</span>
+                    <span
+                        style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">🚀
+                        Live Web App</span>
+                </div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">RTO & Fraud Detection Web App</h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
+                    Deployed a live ML web app on Render. Integrated a Random Forest model with Flask backend and Aiven
+                    Cloud MySQL to predict high-risk delivery orders in real-time.
+                </p>
+                <a href="https://e-commerce-rto-fraud-predictor.onrender.com" target="_blank"
+                    style="color: #3b82f6; font-weight: bold; text-decoration: none;">Live App Demo ➔</a>
+            </div>
+
+            <!-- Project 5: OLA Ride Data Analytics -->
+            <div class="project-card" style="padding: 30px;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <span
+                        style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3);">Advanced
+                        DAX • UI/UX</span>
+                    <span
+                        style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">📊
+                        40k+ Bookings Analyzed</span>
+                </div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">OLA Ride Data Analytics Suite</h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
+                    Designed a 5-page F-pattern dashboard analyzing 40k+ bookings. Handled complex cancellation logic
+                    using variable-based DAX (`VAR`, `DIVIDE`, `CALCULATE`).
+                </p>
+                <a href="#" style="color: #3b82f6; font-weight: bold; text-decoration: none;">View Case Study ➔</a>
+            </div>
+
+            <!-- Project 6: HR Employee Attrition Analytics -->
+            <div class="project-card" style="padding: 30px;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <span
+                        style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3);">Power
+                        BI • Star Schema</span>
+                    <span
+                        style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">👥
+                        16.1% Attrition Insights</span>
+                </div>
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">HR Attrition & Retention Dashboard
+                </h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">
+                    Analyzed 1,470 employee records to uncover key turnover drivers. Highlighted critical risks in early
+                    tenure (1-2 years) and salary brackets to guide executive retention policies.
+                </p>
+                <a href="#" style="color: #3b82f6; font-weight: bold; text-decoration: none;">View Dashboard ➔</a>
+            </div>
+
         </div>
     </div>
-
     <!-- Professional Experience & Simulations Section -->
     <div id="experience" style="max-width: 1100px; margin: 60px auto; padding: 20px;" class="fade-in">
         <h2 style="color: #f8fafc; font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">
