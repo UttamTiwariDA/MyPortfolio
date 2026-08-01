@@ -236,15 +236,18 @@
 
         /* Jab user mouse lekar jayega tab card lift hoga aur neon glow aayega */
         .stat-box:hover {
-            transform: translateY(-12px) scale(1.05) !important;
+            transform: translateY(-12px) scale(1.03);
             border-color: var(--hover-color) !important;
-            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.25) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--hover-color) inset;
         }
 
         .stat-icon {
             font-size: 2.2rem;
             margin-bottom: 10px;
             transition: transform 0.3s ease;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
         }
 
         .stat-box:hover .stat-icon {
