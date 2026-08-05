@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* =========================================
+           UNDER THE HOOD OPTIMIZATIONS ADDED
+        ========================================= */
         html {
             scroll-behavior: smooth;
             color-scheme: dark !important;
@@ -39,7 +42,7 @@
             cursor: auto;
         }
 
-        /* CUSTOM CURSOR STYLES */
+        /* CUSTOM CURSOR STYLES (GPU Accelerated) */
         .custom-cursor {
             position: fixed;
             top: 0;
@@ -49,10 +52,12 @@
             border: 2px solid #3b82f6;
             border-radius: 50%;
             pointer-events: none;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) translateZ(0);
             z-index: 9999;
             transition: width 0.2s, height 0.2s, background-color 0.2s, box-shadow 0.2s;
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            will-change: width, height, transform;
+            /* GPU Optimization */
         }
 
         .custom-cursor.hovering {
@@ -95,7 +100,7 @@
             list-style: none;
         }
 
-        /* Background Grid Animation */
+        /* Background Grid Animation (GPU Accelerated) */
         body::before {
             content: '';
             position: fixed;
@@ -112,15 +117,17 @@
             -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
             mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
             animation: flowGrid 15s linear infinite;
+            will-change: transform;
+            /* GPU Optimization */
         }
 
         @keyframes flowGrid {
             0% {
-                transform: translateY(0);
+                transform: translateY(0) translateZ(0);
             }
 
             100% {
-                transform: translateY(40px);
+                transform: translateY(40px) translateZ(0);
             }
         }
 
@@ -136,19 +143,21 @@
             z-index: -1;
             animation: rotateGlow 30s linear infinite;
             pointer-events: none;
+            will-change: transform;
+            /* GPU Optimization */
         }
 
         @keyframes rotateGlow {
             0% {
-                transform: rotate(0deg);
+                transform: rotate(0deg) translateZ(0);
             }
 
             100% {
-                transform: rotate(360deg);
+                transform: rotate(360deg) translateZ(0);
             }
         }
 
-        /* Glassmorphism Cards */
+        /* Glassmorphism Cards (GPU Accelerated) */
         .card,
         .stat-box,
         .badge-item,
@@ -161,12 +170,15 @@
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
             border-radius: 16px;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transform: translateZ(0);
+            /* Hardware Acceleration trigger */
+            will-change: transform;
         }
 
         .project-card:hover,
         .stat-box:hover,
         .badge-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) translateZ(0);
             border-color: #3b82f6 !important;
             box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
         }
@@ -190,6 +202,8 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transform: translateZ(0);
+            /* Navbar smooth sticky fix */
         }
 
         .logo {
@@ -235,6 +249,7 @@
             left: 0;
             background-color: #3b82f6;
             transition: width 0.3s ease;
+            will-change: width;
         }
 
         .nav-links a:hover {
@@ -254,10 +269,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            will-change: transform;
         }
 
         #theme-toggle:hover {
-            transform: rotate(30deg) scale(1.1);
+            transform: rotate(30deg) scale(1.1) translateZ(0);
         }
 
         /* Fixed Hero Section Animations */
@@ -273,6 +289,7 @@
             box-sizing: border-box;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
             animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            will-change: transform, opacity;
         }
 
         .hero-content {
@@ -300,6 +317,7 @@
             filter: blur(12px);
             opacity: 0.8;
             animation: pulseGlow 3s infinite alternate;
+            will-change: transform;
         }
 
         .hero-image {
@@ -441,6 +459,7 @@
             background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.12), transparent);
             transform: skewX(-25deg);
             animation: continuousSweep 3s infinite ease-in-out;
+            will-change: left;
         }
 
         @keyframes continuousSweep {
@@ -458,7 +477,7 @@
         }
 
         .stat-box:hover {
-            transform: translateY(-12px) scale(1.03);
+            transform: translateY(-12px) scale(1.03) translateZ(0);
             border-color: var(--hover-color) !important;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--hover-color) inset;
         }
@@ -470,10 +489,11 @@
             background: transparent !important;
             border: none !important;
             box-shadow: none !important;
+            will-change: transform;
         }
 
         .stat-box:hover .stat-icon {
-            transform: scale(1.2) rotate(8deg);
+            transform: scale(1.2) rotate(8deg) translateZ(0);
         }
 
         .stat-number {
@@ -507,11 +527,13 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding: 15px 0;
             margin: 30px 0;
+            transform: translateZ(0);
         }
 
         .marquee-track {
             display: inline-block;
             animation: scrollTools 20s linear infinite;
+            will-change: transform;
         }
 
         .marquee-track span {
@@ -524,35 +546,34 @@
 
         @keyframes scrollTools {
             0% {
-                transform: translateX(0);
+                transform: translateX(0) translateZ(0);
             }
 
             100% {
-                transform: translateX(-50%);
+                transform: translateX(-50%) translateZ(0);
             }
         }
 
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(30px) translateZ(0);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             will-change: opacity, transform;
         }
 
         .fade-in.show {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) translateZ(0);
         }
 
         /* =========================================
-           MOBILE STYLES (Fixed Navbar Layout)
+           MOBILE STYLES (Fixed Navbar Layout & Moon Icon)
         ========================================= */
         @media (max-width: 768px) {
             .custom-cursor {
                 display: none !important;
             }
 
-            /* Navbar Mobile Fix */
             .navbar {
                 padding: 15px 20px !important;
                 flex-wrap: wrap !important;
@@ -562,12 +583,10 @@
             .logo {
                 font-size: 1.2rem !important;
                 white-space: nowrap;
-                /* Taki logo break na ho */
             }
 
             .nav-right-container {
                 width: 100%;
-                /* Force nav links to next line */
                 justify-content: center !important;
                 margin-top: 15px;
             }
@@ -649,6 +668,7 @@
                 padding: 5px 10px;
             }
 
+            /* Disabled heavy hover/3D filters on mobile for raw speed */
             .project-card,
             .stat-box,
             footer {
@@ -816,38 +836,38 @@
 
         @keyframes pulse {
             0% {
-                transform: scale(1);
+                transform: scale(1) translateZ(0);
             }
 
             50% {
-                transform: scale(1.25);
+                transform: scale(1.25) translateZ(0);
             }
 
             100% {
-                transform: scale(1);
+                transform: scale(1) translateZ(0);
             }
         }
 
         @keyframes slideUp {
             0% {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(40px) translateZ(0);
             }
 
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) translateZ(0);
             }
         }
 
         @keyframes pulseGlow {
             0% {
-                transform: scale(1);
+                transform: scale(1) translateZ(0);
                 opacity: 0.6;
             }
 
             100% {
-                transform: scale(1.05);
+                transform: scale(1.05) translateZ(0);
                 opacity: 0.9;
             }
         }
@@ -880,6 +900,7 @@
             <!-- Profile Picture -->
             <div class="hero-image-wrapper">
                 <div class="hero-glow"></div>
+                <!-- NO Lazy Loading here because it's Above the Fold (LCP Optimization) -->
                 <img src="profile.jpg" alt="Mr. Uttam Tiwari" class="hero-image">
             </div>
 
@@ -1060,7 +1081,7 @@
                 <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Engineered an
                     enterprise-grade pipeline. Used Python & SQLAlchemy for ETL into MySQL, visualized via an app-style
                     Power BI dashboard featuring dynamic heatmaps and tooltips.</p>
-                <a href="https://github.com/UttamTiwariDA/Power-BI-Portfolio/tree/main/CFO_Analysis"
+                <a href="https://github.com/87690ut/Power-BI-Portfolio/tree/main/CFO_Analysis" target="_blank"
                     style="color: #3b82f6; font-weight: bold; text-decoration: none; position: relative; z-index: 10;">View
                     Documentation ➔</a>
             </div>
@@ -1077,12 +1098,13 @@
                         style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700;">🎯
                         100% Data Integrity</span>
                 </div>
-                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Superstore Accuracy-First Analytics
+                <h3 style="color: #f8fafc; font-size: 1.5rem; margin: 0 0 15px 0;">Superstore Analytics & Data Audit
                 </h3>
-                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Focused on
-                    row-level integrity. Audited data using 8 complex MySQL queries and solved complex Context
-                    Transition errors using advanced DAX.</p>
-                <a href="#"
+                <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Audited data
+                    integrity of 10,000+ records using MySQL window functions and 8 complex CTEs to uncover unprofitable
+                    categories. Fixed complex filter context errors with Advanced DAX.</p>
+                <a href="https://github.com/87690ut/Power-BI-Portfolio/tree/main/End_to_End_Superstore_Pipeline"
+                    target="_blank"
                     style="color: #3b82f6; font-weight: bold; text-decoration: none; position: relative; z-index: 10;">View
                     Source Code ➔</a>
             </div>
@@ -1104,7 +1126,7 @@
                 <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Handled 100k+
                     orders. Cleaned data via Python, wrote SQL queries to uncover customer churn patterns (97%), and
                     optimized Power BI geo-mapping performance by 60%.</p>
-                <a href="https://github.com/UttamTiwariDA/Power-BI-Portfolio/tree/main/End_to_End_Ecommerce_SQL_Python_Power-BI"
+                <a href="https://github.com/87690ut" target="_blank"
                     style="color: #3b82f6; font-weight: bold; text-decoration: none; position: relative; z-index: 10;">View
                     Project ➔</a>
             </div>
@@ -1146,7 +1168,7 @@
                 <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Designed a 5-page
                     F-pattern dashboard analyzing 40k+ bookings. Handled complex cancellation logic using variable-based
                     DAX (`VAR`, `DIVIDE`, `CALCULATE`).</p>
-                <a href="https://github.com/UttamTiwariDA/Power-BI-Portfolio/tree/main/OLA-DATA-ANALYSIS"
+                <a href="#"
                     style="color: #3b82f6; font-weight: bold; text-decoration: none; position: relative; z-index: 10;">View
                     Case Study ➔</a>
             </div>
@@ -1168,7 +1190,7 @@
                 <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Analyzed 1,470
                     employee records to uncover key turnover drivers. Highlighted critical risks in early tenure (1-2
                     years) and salary brackets to guide executive retention policies.</p>
-                <a href="https://github.com/UttamTiwariDA/Power-BI-Portfolio/tree/main/Employee-Attrition-Data-Analysis"
+                <a href="#"
                     style="color: #3b82f6; font-weight: bold; text-decoration: none; position: relative; z-index: 10;">View
                     Dashboard ➔</a>
             </div>
@@ -1242,7 +1264,8 @@
             <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_69c166ade17b6e154c5fc053_1776150063428_completion_certificate.pdf"
                 target="_blank" class="badge-item"
                 style="text-decoration: none; display: flex; align-items: center; gap: 15px; padding: 20px;">
-                <img src="tata_logo.png" alt="TATA Logo"
+                <!-- Lazy Load Added -->
+                <img src="tata_logo.png" alt="TATA Logo" loading="lazy"
                     style="width: 45px; height: 45px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px;">
                 <div>
                     <p style="color: #f8fafc; font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Tata Data
@@ -1253,7 +1276,8 @@
             <a href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_69c166ade17b6e154c5fc053_1781413618556_completion_certificate.pdf"
                 target="_blank" class="badge-item"
                 style="text-decoration: none; display: flex; align-items: center; gap: 15px; padding: 20px;">
-                <img src="deloitte_logo.png" alt="Deloitte Logo"
+                <!-- Lazy Load Added -->
+                <img src="deloitte_logo.png" alt="Deloitte Logo" loading="lazy"
                     style="width: 45px; height: 45px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px;">
                 <div>
                     <p style="color: #f8fafc; font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Deloitte Data
@@ -1322,7 +1346,7 @@
                     style="display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 10;">
                     <input type="hidden" name="access_key" value="782a9191-aae4-4574-b055-4c85d2d1c19e">
                     <input type="checkbox" name="botcheck" style="display: none;">
-                    <input type="text" name="name" placeholder="Yx  aour Name" required
+                    <input type="text" name="name" placeholder="Your Name" required
                         style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; outline: none;">
                     <input type="email" name="email" placeholder="Your Email" required
                         style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; color: white; outline: none;">
@@ -1366,10 +1390,9 @@
         </div>
     </footer>
 
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Vanilla Tilt.js (3D Effect) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <!-- Heavy Scripts Deferred for Performance -->
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
     <!-- Consolidated JavaScript Logic -->
     <script>
@@ -1391,9 +1414,11 @@
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        const typedTextSpan = document.getElementById("typed-text");
 
         function typeEffect() {
+            const typedTextSpan = document.getElementById("typed-text");
+            if (!typedTextSpan) return; // Prevent errors if not loaded
+
             const currentRole = roles[roleIndex];
             if (isDeleting) {
                 typedTextSpan.textContent = currentRole.substring(0, charIndex - 1);
@@ -1418,11 +1443,11 @@
         });
 
         // --- 3. Rolling Number Counters ---
-        const counters = document.querySelectorAll('.counter');
         let hasCounted = false;
         const countObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasCounted) {
+                    const counters = document.querySelectorAll('.counter');
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
                         const duration = 2000;
@@ -1443,14 +1468,23 @@
                 }
             });
         }, { threshold: 0.5 });
-        document.querySelector('.stats-banner').querySelectorAll('.stat-box').forEach(box => countObserver.observe(box));
+
+        // Use timeout to ensure DOM is ready before observing
+        setTimeout(() => {
+            const statsBanner = document.querySelector('.stats-banner');
+            if (statsBanner) {
+                statsBanner.querySelectorAll('.stat-box').forEach(box => countObserver.observe(box));
+            }
+        }, 500);
 
         // --- 4. Vanilla Tilt (3D Effect) Disable on Mobile ---
         if (window.innerWidth <= 768) {
-            const tiltElements = document.querySelectorAll("[data-tilt]");
-            tiltElements.forEach(el => {
-                if (el.vanillaTilt) el.vanillaTilt.destroy();
-            });
+            setTimeout(() => {
+                const tiltElements = document.querySelectorAll("[data-tilt]");
+                tiltElements.forEach(el => {
+                    if (el.vanillaTilt) el.vanillaTilt.destroy();
+                });
+            }, 1000); // Give tilt script time to load before destroying
         }
 
         // --- 5. Browser Refresh Bug Fix ---
@@ -1458,10 +1492,12 @@
 
         // --- 6. Theme Toggle Logic ---
         const themeToggleBtn = document.getElementById('theme-toggle');
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            themeToggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
-        });
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                themeToggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+            });
+        }
 
         // --- 7. Scroll Animation Observer ---
         const observer = new IntersectionObserver((entries) => {
@@ -1470,40 +1506,53 @@
                 else entry.target.classList.remove('show');
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+        }, 100);
 
         // --- 8. AJAX Contact Form Submission Handler ---
         const contactForm = document.getElementById('ajax-form');
-        const statusText = document.getElementById('form-status');
-        contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-            statusText.style.display = "block";
-            statusText.style.color = "#3b82f6";
-            statusText.innerHTML = "Sending message...";
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: json
-                });
-                const result = await response.json();
-                if (response.status === 200) {
-                    statusText.style.color = "#10b981"; statusText.innerHTML = "Message sent successfully! 🚀"; contactForm.reset();
-                } else {
-                    statusText.style.color = "#ef4444"; statusText.innerHTML = result.message || "Something went wrong!";
+        if (contactForm) {
+            const statusText = document.getElementById('form-status');
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+                statusText.style.display = "block";
+                statusText.style.color = "#3b82f6";
+                statusText.innerHTML = "Sending message...";
+                try {
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: json
+                    });
+                    const result = await response.json();
+                    if (response.status === 200) {
+                        statusText.style.color = "#10b981"; statusText.innerHTML = "Message sent successfully! 🚀"; contactForm.reset();
+                    } else {
+                        statusText.style.color = "#ef4444"; statusText.innerHTML = result.message || "Something went wrong!";
+                    }
+                } catch (error) {
+                    statusText.style.color = "#ef4444"; statusText.innerHTML = "Network error! Please try again.";
                 }
-            } catch (error) {
-                statusText.style.color = "#ef4444"; statusText.innerHTML = "Network error! Please try again.";
-            }
-        });
+            });
+        }
 
         // --- 9. Forecast Chart Rendering (Chart.js) ---
-        const ctx = document.getElementById('olistChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: { labels: ['Single-Time Buyers (97.68%)', 'Retained Customers (2.32%)'], datasets: [{ data: [97.68, 2.32], backgroundColor: ['#ef4444', '#10b981'], borderWidth: 0 }] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, boxWidth: 12 } } } }
+        // Need to wait for Chart.js to load since we deferred it
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const canvas = document.getElementById('olistChart');
+                if (canvas && typeof Chart !== 'undefined') {
+                    const ctx = canvas.getContext('2d');
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: { labels: ['Single-Time Buyers (97.68%)', 'Retained Customers (2.32%)'], datasets: [{ data: [97.68, 2.32], backgroundColor: ['#ef4444', '#10b981'], borderWidth: 0 }] },
+                        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, boxWidth: 12 } } } }
+                    });
+                }
+            }, 500); // 500ms delay ensures script is parsed
         });
     </script>
 </body>
